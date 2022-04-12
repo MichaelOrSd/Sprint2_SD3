@@ -4,11 +4,6 @@ if (process.env.NODE_ENV !== 'production') {
 
 const express = require('express');
 const app = express();
-const bcrypt = require('bcrypt');
-const passport = require('passport');
-const flash = require('express-flash');
-const session = require('express-session');
-const methodOverride = require('method-override');
 
 const fs = require('fs');
 const path = require('path');
@@ -28,8 +23,10 @@ app.listen(port, () => {
 });
 
 const indexRouter = require('./routes/home');
+const postgresRouter = require('./routes/stockPostgres');
 
 app.use('/', indexRouter);
+app.use('/postgres', postgresRouter);
 
 app.use((req, res) => {
   res.status(404).render('404');

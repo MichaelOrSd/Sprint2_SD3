@@ -65,3 +65,16 @@ main {
   margin-left: 20px;
   margin-right: 20px;
 }
+
+#resultContainer {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+}
+
+#stockInfo {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}

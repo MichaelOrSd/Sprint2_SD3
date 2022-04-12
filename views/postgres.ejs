@@ -1,0 +1,18 @@
+<html>
+  <%- include('./partials/header.ejs') %>
+  <body>
+    <%- include('./partials/nav.ejs') %>
+    <main>
+      <h1>Postgres Search</h1>
+      <form action="/postgres/" method="POST">
+        <div>
+          <label for="search">Stocks</label>
+          <input type="search" id="search" name="search" required />
+        </div>
+        <button type="submit">Search</button>
+        <% if(messages.error) { %> <%= messages.error %> <% } %>
+      </form>
+      <div></div>
+    </main>
+  </body>
+</html>

@@ -6,7 +6,7 @@ const pool = new Pool({
   password: 'postgres',
   host: 'localhost',
   // selects what db to acess
-  database: 'users',
+  database: 'Stock_Market',
   // default port for pgAdmin
   port: 5432,
 });

@@ -50,7 +50,7 @@ app.get('/test', async (req, res) => {
   let users = await usersDal.getUsers();
   if (users.length === 0) res.render('norecord');
   else {
-    res.render('test.ejs', { users, username });
+    res.render('test.ejs', { users });
   }
 });
 
@@ -65,6 +65,8 @@ app.post('/login', async (req, res) => {
       req.body.email,
       hashedPassword2
     );
+    users1.push(JSON.stringify(user));
+    console.log(users1);
     if (user.length === 0) res.render('/login');
     else {
       res.render('index.ejs', { user });
