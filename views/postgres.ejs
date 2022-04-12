@@ -12,7 +12,33 @@
         <button type="submit">Search</button>
         <% if(messages.error) { %> <%= messages.error %> <% } %>
       </form>
-      <div></div>
+      <div id="resultContainer">
+        <% if (searchByMarket.length > 0) { %>
+        <%searchByMarket.forEach(stock=>{%>
+        <div id="stockInfo">
+          <p><%= stock.stock_market %></p>
+          <div id="stockName"><p><%= stock.stock_name %></p></div>
+          <div id="stockSymbol"><p><%= stock.stock_symbol %></p></div>
+          <p><%= stock.stock_cap %></p>
+        </div>
+        <% }) %> <% } %> <% if ( searchByName.length > 0) { %> <%
+        searchByName.forEach(stock=>{%>
+        <div id="stockInfo">
+          <p><%= stock.stock_market %></p>
+          <div id="stockName"><p><%= stock.stock_name %></p></div>
+          <div id="stockSymbol"><p><%= stock.stock_symbol %></p></div>
+          <p><%= stock.stock_cap %></p>
+        </div>
+        <% }) %> <% } %> <% if ( searchBySymbol.length > 0) { %> <%
+        searchBySymbol.forEach(stock=>{%>
+        <div id="stockInfo">
+          <p><%= stock.stock_market %></p>
+          <div id="stockName"><p><%= stock.stock_name %></p></div>
+          <div id="stockSymbol"><p><%= stock.stock_symbol %></p></div>
+          <p><%= stock.stock_cap %></p>
+        </div>
+        <% }) %> <% } %>
+      </div>
     </main>
   </body>
 </html>
