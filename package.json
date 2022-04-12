@@ -1,10 +1,10 @@
 {
   "name": "wesleysquire_sprint2.1",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
-    "devStart": "nodemon server.js"
+    "devStart": "nodemon server.js",
+    "start": "node server.js"
   },
   "author": "",
   "license": "ISC",
@@ -28,5 +28,14 @@
   },
   "engines": {
     "node": "16.x"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MichaelOrSd/Sprint2_SD3.git"
+  },
+  "bugs": {
+    "url": "https://github.com/MichaelOrSd/Sprint2_SD3/issues"
+  },
+  "homepage": "https://github.com/MichaelOrSd/Sprint2_SD3#readme",
+  "description": ""
 }

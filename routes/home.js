@@ -15,6 +15,7 @@ const usersDal = require('../services/users.dal');
 
 const initializePassport = require('../scripts/passport-config');
 const { hash } = require('bcrypt');
+// const { json } = require('stream/consumers');
 initializePassport(
   passport,
   (email) => users1.find((user) => user.email === email),
