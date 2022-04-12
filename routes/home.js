@@ -15,6 +15,7 @@ const usersDal = require('../services/users.dal');
 
 const initializePassport = require('../scripts/passport-config');
 const { hash } = require('bcrypt');
+// const { json } = require('stream/consumers');
 initializePassport(
   passport,
   (email) => users1.find((user) => user.email === email),
@@ -23,6 +24,7 @@ initializePassport(
 
 // Can connect to database here, perhaps a tokens.json?!
 const users1 = [];
+
 
 // Had to use app.use instead of router.use as running router would cause errors w/ passport and our authenticated functions
 app.use(express.static('public'));
@@ -65,6 +67,8 @@ app.post('/login', async (req, res) => {
       req.body.email,
       hashedPassword2
     );
+    users1.push(JSON.stringify(user));
+    console.log(users1)
     if (user.length === 0) res.render('/login');
     else {
       res.render('index.ejs', { user });
