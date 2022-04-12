@@ -1,0 +1,15 @@
+<html lang="en">
+  <%- include('./partials/header.ejs') %>
+  <body>
+    <%- include('./partials/nav.ejs') %>
+    <main>
+      <div class="stores content">
+        <h2>TEST</h2>
+        <h3>heres data from database</h3>
+        <% if (users.length > 0) { %> <% users.forEach(user => { %>
+        <p><%= user.username %></p>
+        <% }) %> <% } %>
+      </div>
+    </main>
+  </body>
+</html>

@@ -55,24 +55,23 @@ app.get('/test', async (req, res) => {
 });
 
 app.get('/login', checkNotAuthenticated, (req, res, e) => {
-  res.render('login.ejs', { messages: {} });
+  res.render('login.ejs');
 });
 
 app.post('/login', async (req, res) => {
   try {
-    const hashedPassword2 = req.body.password;
+    // const hashedPassword2 = bcrypt.hash(req.body.password, 10);
     let user = await usersDal.getUsersByEmailnPass(
       req.body.email,
       hashedPassword2
     );
     if (user.length === 0) res.render('/login');
     else {
+      console.log(user);
       res.render('index.ejs', { user });
     }
   } catch {
-    res.render('login.ejs', {
-      messages: { error: 'Incorrect Password Or Email!' },
-    });
+    res.render('login.ejs', { messages: 'Incorrect Password or Email' });
   }
 });
 
@@ -82,7 +81,7 @@ app.get('/register', checkNotAuthenticated, (req, res) => {
 
 app.post('/register', async (req, res) => {
   try {
-    const hashedPassword = await req.body.password;
+    const hashedPassword = await bcrypt.hash(req.body.password, 10);
     let crc = crc32(req.body.name).toString(16);
     let name = req.body.name;
     let email = req.body.email;
