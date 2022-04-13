@@ -38,15 +38,20 @@ app.get('/', async (req, res) => {
 app.post('/', async (req, res) => {
   try {
     const input = req.body.search;
-    const searchByMarket = await stockDal.getStockByMarket(input);
-    const searchByName = await stockDal.getStockByName(input);
-    const searchBySymbol = await stockDal.getStockBySymbol(input);
+    const searchByMarket = (await stockDal.getStockByMarket(input)) || [];
+    const searchByName = (await stockDal.getStockByName(input)) || [];
+    const searchBySymbol = (await stockDal.getStockBySymbol(input)) || [];
     if (
       searchByMarket.length === 0 &&
       searchByName.length === 0 &&
       searchBySymbol.length === 0
     )
-      res.render('/');
+      res.render('postgres.ejs', {
+        messages: { error: 'Cannot Find Anything D:' },
+        searchByMarket,
+        searchByName,
+        searchBySymbol,
+      });
     else {
       res.render('postgres.ejs', {
         searchByMarket,
@@ -57,6 +62,9 @@ app.post('/', async (req, res) => {
   } catch {
     res.render('postgres.ejs', {
       messages: { error: 'Cannot Find Anything D:' },
+      searchByMarket,
+      searchByName,
+      searchBySymbol,
     });
   }
 });
