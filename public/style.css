@@ -96,3 +96,7 @@ main {
   flex-wrap: nowrap;
   flex-direction: column;
 }
+
+#error {
+  color: red;
+}

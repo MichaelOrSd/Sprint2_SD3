@@ -3,7 +3,7 @@
   <body>
     <main>
       <h1>Login</h1>
-      <% if(messages.error) { %> <%= messages.error %> <% } %>
+      <p id="error"><% if(messages.error) { %> <%= messages.error %> <% } %></p>
       <form action="/login" method="POST">
         <div>
           <label for="email">Email</label>

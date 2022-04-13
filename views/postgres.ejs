@@ -10,7 +10,9 @@
           <input type="search" id="search" name="search" required />
         </div>
         <button type="submit">Search</button>
-        <% if(messages.error) { %> <%= messages.error %> <% } %>
+        <p id="error">
+          <% if(messages.error) { %> <%= messages.error %> <% } %>
+        </p>
       </form>
       <div id="resultContainer">
         <% if (searchByMarket.length > 0) { %>

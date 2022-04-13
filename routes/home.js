@@ -80,7 +80,9 @@ app.post('/login', async (req, res) => {
 });
 
 app.get('/register', checkNotAuthenticated, (req, res) => {
-  res.render('register.ejs');
+  res.render('register.ejs', {
+    messages: { error: '' },
+  });
 });
 
 app.post('/register', async (req, res) => {
@@ -98,7 +100,9 @@ app.post('/register', async (req, res) => {
     await usersDal.addUser(crc, email, name, hashedPassword);
     res.redirect('/login');
   } catch {
-    res.redirect('/register');
+    res.render('register.ejs', {
+      messages: { error: 'Email is in use D:' },
+    });
   }
 });
 
