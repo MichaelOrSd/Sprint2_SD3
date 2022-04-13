@@ -25,7 +25,14 @@ app.use(methodOverride('_method'));
 const stockDal = require('../services/stockInfo.dal');
 
 app.get('/', async (req, res) => {
-  res.render('postgres.ejs');
+  const searchByMarket = [];
+  const searchByName = [];
+  const searchBySymbol = [];
+  res.render('postgres.ejs', {
+    searchByMarket,
+    searchByName,
+    searchBySymbol,
+  });
 });
 
 app.post('/', async (req, res) => {
@@ -34,7 +41,6 @@ app.post('/', async (req, res) => {
     const searchByMarket = await stockDal.getStockByMarket(input);
     const searchByName = await stockDal.getStockByName(input);
     const searchBySymbol = await stockDal.getStockBySymbol(input);
-    console.log(searchByMarket);
     if (
       searchByMarket.length === 0 &&
       searchByName.length === 0 &&

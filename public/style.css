@@ -78,3 +78,21 @@ main {
   align-items: center;
   justify-content: space-between;
 }
+
+#stockName {
+  width: 500px;
+  height: 18px;
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  flex-direction: column;
+}
+
+#stockSymbol {
+  width: 185px;
+  height: 18px;
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  flex-direction: column;
+}
