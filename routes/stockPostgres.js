@@ -24,7 +24,7 @@ app.use(methodOverride('_method'));
 
 const stockDal = require('../services/stockInfo.dal');
 
-app.get('/', async (req, res) => {
+app.get('/postgres', async (req, res) => {
   const searchByMarket = [];
   const searchByName = [];
   const searchBySymbol = [];
@@ -35,7 +35,7 @@ app.get('/', async (req, res) => {
   });
 });
 
-app.post('/', async (req, res) => {
+app.post('/postgres', async (req, res) => {
   try {
     const input = req.body.search;
     const searchByMarket = (await stockDal.getStockByMarket(input)) || [];

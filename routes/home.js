@@ -11,7 +11,9 @@ const fs = require('fs');
 const fsPromise = require('fs').promises;
 const crc32 = require('crc/crc32');
 
+// Databases!
 const usersDal = require('../services/users.dal');
+const stockDal = require('../services/stockInfo.dal');
 
 const initializePassport = require('../scripts/passport-config');
 const { hash } = require('bcrypt');
@@ -22,8 +24,7 @@ initializePassport(
   (id) => users1.find((user) => user.id === id)
 );
 
-// Can connect to database here, perhaps a tokens.json?!
-const users1 = [];
+let users1 = [];
 
 // Had to use app.use instead of router.use as running router would cause errors w/ passport and our authenticated functions
 app.use(express.static('public'));
@@ -43,11 +44,13 @@ app.use(methodOverride('_method'));
 // When the path is /user we will render the basicUser.ejs
 
 app.get('/', checkAuthenticated, (req, res) => {
-  res.render('index.ejs', { name: req.user.name });
+  let name = users1 || [] || req.user.name;
+  let user = users1;
+  res.render('index.ejs', { user, name });
 });
 
 app.get('/test', async (req, res) => {
-  console.log(req.method);
+  // console.log(req.method);
   let users = await usersDal.getUsers();
   if (users.length === 0) res.render('norecord');
   else {
@@ -66,8 +69,7 @@ app.post('/login', async (req, res) => {
       req.body.email,
       hashedPassword2
     );
-    users1.push(JSON.stringify(user));
-    console.log(users1);
+    users1.push(user);
     if (user.length === 0) res.render('/login');
     else {
       res.render('index.ejs', { user });
@@ -91,12 +93,6 @@ app.post('/register', async (req, res) => {
     let crc = crc32(req.body.name).toString(16);
     let name = req.body.name;
     let email = req.body.email;
-    users1.push({
-      id: crc,
-      name: req.body.name,
-      email: req.body.email,
-      password: hashedPassword,
-    });
     await usersDal.addUser(crc, email, name, hashedPassword);
     res.redirect('/login');
   } catch {
@@ -107,19 +103,65 @@ app.post('/register', async (req, res) => {
 });
 
 app.delete('/logout', (req, res) => {
-  req.logOut();
+  // req.logOut();
   res.redirect('/login');
+  users1 = [];
+});
+
+app.get('/postgres', checkAuthenticated, async (req, res) => {
+  const searchByMarket = [];
+  const searchByName = [];
+  const searchBySymbol = [];
+  res.render('postgres.ejs', {
+    searchByMarket,
+    searchByName,
+    searchBySymbol,
+  });
+});
+
+app.post('/postgres', checkAuthenticated, async (req, res) => {
+  try {
+    const input = req.body.search;
+    const searchByMarket = (await stockDal.getStockByMarket(input)) || [];
+    const searchByName = (await stockDal.getStockByName(input)) || [];
+    const searchBySymbol = (await stockDal.getStockBySymbol(input)) || [];
+    if (
+      searchByMarket.length === 0 &&
+      searchByName.length === 0 &&
+      searchBySymbol.length === 0
+    )
+      res.render('postgres.ejs', {
+        messages: { error: 'Cannot Find Anything D:' },
+        searchByMarket,
+        searchByName,
+        searchBySymbol,
+      });
+    else {
+      res.render('postgres.ejs', {
+        searchByMarket,
+        searchByName,
+        searchBySymbol,
+      });
+    }
+  } catch {
+    res.render('postgres.ejs', {
+      messages: { error: 'Cannot Find Anything D:' },
+      searchByMarket,
+      searchByName,
+      searchBySymbol,
+    });
+  }
 });
 
 function checkAuthenticated(req, res, next) {
-  if (req.isAuthenticated()) {
+  if (users1.length === 1) {
     return next();
   }
   res.redirect('/login');
 }
 
 function checkNotAuthenticated(req, res, next) {
-  if (req.isAuthenticated()) {
+  if (users1.length === 1) {
     return res.redirect('/');
   }
   next();
