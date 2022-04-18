@@ -26,6 +26,7 @@ const indexRouter = require('./routes/home');
 // const postgresRouter = require('./routes/stockPostgres');
 
 app.use('/', indexRouter);
+// app.use('/postgres', postgresRouter);
 
 app.use((req, res) => {
   res.status(404).render('404');

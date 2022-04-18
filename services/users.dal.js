@@ -24,7 +24,19 @@ var getUsersByEmailnPass = function (email, password) {
         reject(err);
       } else {
         resolve(result.rows);
-        console.log(result.password);
+      }
+    });
+  });
+};
+
+var getUsersByEmail = function (email, password) {
+  return new Promise(function (resolve, reject) {
+    const sql = 'SELECT * FROM public.users WHERE email = $1';
+    dal.query(sql, [email], (err, result) => {
+      if (err) {
+        reject(err);
+      } else {
+        resolve(result.rows);
       }
     });
   });
@@ -48,4 +60,5 @@ module.exports = {
   addUser,
   getUsers,
   getUsersByEmailnPass,
+  getUsersByEmail,
 };

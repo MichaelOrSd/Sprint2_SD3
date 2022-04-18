@@ -76,7 +76,7 @@ app.post('/login', async (req, res) => {
     }
   } catch {
     res.render('login.ejs', {
-      messages: { error: 'Incorrect Password Or Email!' },
+      messages: { error: 'Incorrect Email Or Password D:' },
     });
   }
 });
@@ -93,8 +93,15 @@ app.post('/register', async (req, res) => {
     let crc = crc32(req.body.name).toString(16);
     let name = req.body.name;
     let email = req.body.email;
-    await usersDal.addUser(crc, email, name, hashedPassword);
-    res.redirect('/login');
+    let emailCheck = await usersDal.getUsersByEmail(email);
+    if (emailCheck.length === 0) {
+      await usersDal.addUser(crc, email, name, hashedPassword);
+      res.redirect('/login');
+    } else {
+      res.render('register.ejs', {
+        messages: { error: 'Email is in use D:' },
+      });
+    }
   } catch {
     res.render('register.ejs', {
       messages: { error: 'Email is in use D:' },
@@ -131,7 +138,7 @@ app.post('/postgres', checkAuthenticated, async (req, res) => {
       searchBySymbol.length === 0
     )
       res.render('postgres.ejs', {
-        messages: { error: 'Cannot Find Anything D:' },
+        messages: { error: 'Cannot Find Anything! Try: NASDAQ or NEWS ' },
         searchByMarket,
         searchByName,
         searchBySymbol,
@@ -145,7 +152,7 @@ app.post('/postgres', checkAuthenticated, async (req, res) => {
     }
   } catch {
     res.render('postgres.ejs', {
-      messages: { error: 'Cannot Find Anything D:' },
+      messages: { error: 'Cannot Find Anything! Try: NASDAQ or NEWS' },
       searchByMarket,
       searchByName,
       searchBySymbol,

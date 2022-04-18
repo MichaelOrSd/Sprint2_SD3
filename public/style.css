@@ -64,6 +64,15 @@ main {
   padding-top: 98px;
   margin-left: 20px;
   margin-right: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+#filter{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
 }
 
 #resultContainer {
@@ -72,14 +81,14 @@ main {
   flex-direction: column;
 }
 
-#stockInfo {
+.stockInfo {
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
 }
 
-#stockName {
+.stockName {
   width: 500px;
   height: 18px;
   display: flex;
@@ -88,7 +97,7 @@ main {
   flex-direction: column;
 }
 
-#stockSymbol {
+.stockSymbol {
   width: 185px;
   height: 18px;
   display: flex;
@@ -99,4 +108,10 @@ main {
 
 #error {
   color: red;
+}
+
+footer {
+  color: #777;
+  text-align: center;
+  margin: 80px auto 20px;
 }

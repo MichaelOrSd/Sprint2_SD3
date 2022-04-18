@@ -1,3 +1,4 @@
+<!-- DON'T SAVE W/ PRETTIER ENABLED -->
 <html>
   <%- include('./partials/header.ejs') %>
   <body>
@@ -14,33 +15,40 @@
           <% if(messages.error) { %> <%= messages.error %> <% } %>
         </p>
       </form>
+      <div id="filter">
+        <p><strong>Market</strong></p>
+        <p class="stockName"><strong>Name</strong></p>
+        <p class="stockSymbol"><strong>Symbol</strong></p>
+        <p><strong>Cap</strong></p>
+      </div>
       <div id="resultContainer">
         <% if (searchByMarket.length > 0) { %>
         <%searchByMarket.forEach(stock=>{%>
-        <div id="stockInfo">
+        <div class="stockInfo">
           <p><%= stock.stock_market %></p>
-          <div id="stockName"><p><%= stock.stock_name %></p></div>
-          <div id="stockSymbol"><p><%= stock.stock_symbol %></p></div>
+          <div class="stockName"><p><%= stock.stock_name %></p></div>
+          <div class="stockSymbol"><p><%= stock.stock_symbol %></p></div>
           <p><%= stock.stock_cap %></p>
         </div>
-        <% }) %> <% } %> <% if ( searchByName.length > 0) { %> <%
-        searchByName.forEach(stock=>{%>
-        <div id="stockInfo">
+        <% }) %> <% } %> <% if ( searchByName.length > 0) { %> 
+        <% searchByName.forEach(stock=>{%>
+        <div class="stockInfo">
           <p><%= stock.stock_market %></p>
-          <div id="stockName"><p><%= stock.stock_name %></p></div>
-          <div id="stockSymbol"><p><%= stock.stock_symbol %></p></div>
+          <div class="stockName"><p><%= stock.stock_name %></p></div>
+          <div class="stockSymbol"><p><%= stock.stock_symbol %></p></div>
           <p><%= stock.stock_cap %></p>
         </div>
-        <% }) %> <% } %> <% if ( searchBySymbol.length > 0) { %> <%
-        searchBySymbol.forEach(stock=>{%>
-        <div id="stockInfo">
+        <% }) %> <% } %> <% if ( searchBySymbol.length > 0) { %> 
+        <% searchBySymbol.forEach(stock=>{%>
+        <div class="stockInfo">
           <p><%= stock.stock_market %></p>
-          <div id="stockName"><p><%= stock.stock_name %></p></div>
-          <div id="stockSymbol"><p><%= stock.stock_symbol %></p></div>
+          <div class="stockName"><p><%= stock.stock_name %></p></div>
+          <div class="stockSymbol"><p><%= stock.stock_symbol %></p></div>
           <p><%= stock.stock_cap %></p>
         </div>
         <% }) %> <% } %>
       </div>
+      <%- include('./partials/footer.ejs') %>
     </main>
   </body>
 </html>
