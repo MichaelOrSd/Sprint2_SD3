@@ -11,12 +11,22 @@ const fs = require('fs');
 const fsPromise = require('fs').promises;
 const crc32 = require('crc/crc32');
 
+// Logging events
+const logEvents = require('../scripts/logEvents');
+const EventEmitter = require('events');
+class MyEmitter extends EventEmitter {}
+const myEmitter = new MyEmitter();
+myEmitter.on('log', (event, user, level, msg) =>
+  logEvents(event, user, level, msg)
+);
+
 // Databases!
 const usersDal = require('../services/users.dal');
 const stockDal = require('../services/stockInfo.dal');
 
 const initializePassport = require('../scripts/passport-config');
 const { hash } = require('bcrypt');
+
 // const { json } = require('stream/consumers');
 initializePassport(
   passport,
@@ -64,14 +74,13 @@ app.get('/login', checkNotAuthenticated, (req, res, e) => {
 
 app.post('/login', async (req, res) => {
   try {
+    let email = req.body.email;
     const hashedPassword2 = req.body.password;
-    let user = await usersDal.getUsersByEmailnPass(
-      req.body.email,
-      hashedPassword2
-    );
+    let user = await usersDal.getUsersByEmailnPass(email, hashedPassword2);
     users1.push(user);
     if (user.length === 0) res.render('/login');
     else {
+      myEmitter.emit('log', 'INFO', email, 'LOGIN', 'A user logged in');
       res.render('index.ejs', { user });
     }
   } catch {
@@ -95,6 +104,7 @@ app.post('/register', async (req, res) => {
     let email = req.body.email;
     let emailCheck = await usersDal.getUsersByEmail(email);
     if (emailCheck.length === 0) {
+      myEmitter.emit(`log', ${email}, 'REGISTER', 'New user registered`);
       await usersDal.addUser(crc, email, name, hashedPassword);
       res.redirect('/login');
     } else {
