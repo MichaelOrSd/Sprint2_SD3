@@ -1,0 +1,25 @@
+<html lang="en">
+    <body>
+    <h1>SEARCH</h1>
+    <form action="/mongo" method="POST"></form>
+        <div>
+          <label for="search">Stocks</label>
+          <input type="search" id="search" name="search" required />
+        </div>
+        <button type="submit">Search</button>
+      </form>
+    <div class="search content">
+        <h2>All results</h2>
+        <% if (results.length > 0) { %>
+            <% results.forEach(stock => { %>
+                <p class="stock_market">Stock Market
+                <b><%= stock.stock_market %> <%= stock.stock_name %></b></br>
+                    <%= stock.stock_symbol %> <%= stock.stock_cap %></b></br>
+                </p>
+            <% }) %>
+        <% } else { %>
+            No records found.
+        <% } %>
+    </div>
+    </body>
+</html>

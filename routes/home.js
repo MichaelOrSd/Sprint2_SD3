@@ -80,7 +80,6 @@ app.post('/login', async (req, res) => {
     users1.push(user);
     if (user.length === 0) res.render('/login');
     else {
-      myEmitter.emit('log', 'INFO', email, 'LOGIN', 'A user logged in');
       res.render('index.ejs', { user });
     }
   } catch {
@@ -167,6 +166,25 @@ app.post('/postgres', checkAuthenticated, async (req, res) => {
       searchByName,
       searchBySymbol,
     });
+  }
+});
+
+const { getByFirstName } = require('../services/search.dal');
+
+app.get('/mongo', async (req, res) => {
+  let results = [];
+
+  res.render('mongoSearch.ejs', { results });
+});
+
+app.post('/mongo', async (req, res) => {
+  try {
+    const input = req.body.search;
+    let results = await getByFirstName(input);
+
+    res.render('mongoSearch.ejs', { results });
+  } catch {
+    res.render('mongoSearch.ejs', { results });
   }
 });
 
