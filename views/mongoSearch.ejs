@@ -1,15 +1,17 @@
 <html lang="en">
     <body>
-    <h1>SEARCH</h1>
+    <h1 id="mongoh1">Search MongoDB Database</h1>
     <form action="/mongo" method="POST">
-        <div>
-          <label for="search">Stocks</label>
-          <input type="search" id="search" name="search" required />
+        <div id="label">
+          <label for="search">Try stock name ie: "Qwest Corporation"</label>
         </div>
-        <button type="submit">Search</button>
+        <div>
+          <input type="search" id="searchmongo" name="search" required />
+        </div>
+        <button id="mongobutton" type="submit">Search</button>
       </form>
     <div class="search content">
-        <h2>All results</h2>
+        <h2 id="mongoresults">All results</h2>
         <% if (results.length > 0) { %>
             <% results.forEach(stock => { %>
                 <p class="stock_market">Stock Market
@@ -21,5 +23,10 @@
             No records found.
         <% } %>
     </div>
+    <link rel="stylesheet" type="text/css" href="/style.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Righteous&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=BIZ+UDPMincho&display=swap" rel="stylesheet">
     </body>
 </html>
