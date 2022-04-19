@@ -45,3 +45,8 @@
 20220419	10:54:13	INFO	LOGIN	ashley@gmail.com	A user logged in	7fd8c950-2fb0-4278-a72a-b8335ca2320b
 20220419	10:54:30	INFO	LOGIN	ashley@gmail.com	A user logged in	0e973820-cb48-45e6-a007-aaa32430f2a8
 20220419	10:54:46	INFO	LOGIN	ashley@gmail.com	A user logged in	42adf35f-5402-4ef9-a05c-4104517e54e8
+20220419	10:56:54	INFO	LOGIN	ashley@gmail.com	A user logged in	7aa840ce-a8fa-4048-953a-e63e513f73e6
+20220419	10:57:14	INFO	LOGIN	ashley@gmail.com	A user logged in	5462d0d2-f503-4fd3-b7e8-59e3e030e57f
+20220419	11:10:39	INFO	LOGIN	ashley@gmail.com	A user logged in	1e091db4-1a15-4227-8f9d-6c565d8f06a6
+20220419	11:10:57	INFO	LOGIN	ashley@gmail.com	A user logged in	734de5ce-583b-4689-a576-3d6029613efa
+20220419	11:11:24	INFO	LOGOUT	ashley@gmail.com	A user logged out	706d9150-13f7-42e7-847c-24ced0457455

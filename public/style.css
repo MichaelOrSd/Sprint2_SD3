@@ -3,6 +3,36 @@ body {
   padding: 0 0px;
   font-family: 'Open Sans', sans-serif;
 }
+
+/*********** LOGIN **********/
+
+#loginhtml{
+  background-color: #88f5ab
+}
+#loginheader {
+  font-family: "Righteous", sans-serif;
+  font-size: 3em;
+  padding-top: 0;
+}
+
+#loginlabels {
+  font-family: "BIZ UDPMincho", sans-serif;
+  font-size: 1.5em;
+  margin-bottom: 10px;
+}
+
+#loginbutton {
+  font-size: 1em;
+  margin-bottom: 50px;
+}
+
+#register {
+  font-family: "BIZ UDPMincho", sans-serif;
+  font-size: 1.5em;
+}
+
+/*********** REGISTER ***********/
+
 a:hover {
   color: grey;
 }
@@ -82,7 +112,7 @@ main p {
   padding-top: 20px;
 }
 
-/* MONGO SEARCH */
+/********* MONGO SEARCH **********/
 
 #mongoh1 {
   font-family: "Righteous", sans-serif;
