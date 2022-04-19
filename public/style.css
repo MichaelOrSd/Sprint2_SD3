@@ -271,6 +271,59 @@ main p {
   
 }
 
+/*********** BOTH DATABASES **********/
+
+#bothh1 {
+  font-family: "BIZ UDPMincho", sans-serif;
+  font-size: 2em;
+  padding-bottom: 20px;
+  padding-top: 100px;
+  padding-left: 20px;
+}
+
+#bothlabel {
+  font-family: "BIZ UDPMincho", sans-serif;
+  font-size: 1.5em;
+  padding-bottom: 20px;
+  padding-left: 20px;
+  padding-top: 10px;
+}
+
+#searchboth {
+  margin-bottom: 10px;
+  margin-top: 20px;
+  margin-left: 20px;
+}
+
+#bothbutton {
+  margin-left: 20px;
+}
+
+#bothp2 {
+  font-family: "Righteous", sans-serif;
+  font-size: 2em;
+  padding-right: 160px;
+  padding-bottom: 20px;
+  padding-left: 100px;
+}
+
+#bothp3 {
+  font-family: "Righteous", sans-serif;
+  font-size: 2em;
+  padding-right: 150px;
+  padding-bottom: 20px;
+  
+}
+
+#bothp4 {
+  font-family: "Righteous", sans-serif;
+  font-size: 2em;
+  padding-right: 20px;
+  padding-bottom: 20px;
+  padding-left: 50px;
+  
+}
+
 #resultContainer {
   display: flex;
   height: 100%;

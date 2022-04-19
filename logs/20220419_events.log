@@ -160,3 +160,9 @@
 20220419	12:41:25	INFO	MONGO SEARCH	ashley@gmail.com	User searched for NASDAQ	a9e7ade9-f7c0-475a-a42b-a83d09ad6275
 20220419	12:41:33	INFO	MONGO SEARCH	ashley@gmail.com	User searched for NASDAQ	7f610512-8e43-427f-84dd-5f25649f22c1
 20220419	12:42:19	INFO	MONGO SEARCH	ashley@gmail.com	User searched for NASDAQ	76f50eab-8aae-4722-822d-89041af7f584
+20220419	12:42:56	INFO	MONGO & POSTGRES SEARCH	ashley@gmail.com	User searched for NASDAQ	ede9e592-0b09-419c-8715-0e02a004e280
+20220419	12:43:16	INFO	MONGO & POSTGRES SEARCH	ashley@gmail.com	User searched for Qwest Corporation	d887f381-2363-4de1-8117-81daef6baf09
+20220419	12:48:47	INFO	MONGO & POSTGRES SEARCH	ashley@gmail.com	User searched for NASDAQ	6a50268d-b537-4adb-ad0f-98b6a0a23afb
+20220419	12:49:17	INFO	MONGO & POSTGRES SEARCH	ashley@gmail.com	User searched for NASDAQ	1a2dc1fe-a5ca-40de-bd0b-65423a41cb49
+20220419	12:50:54	INFO	MONGO & POSTGRES SEARCH	ashley@gmail.com	User searched for NASDAQ	8289e2b5-0053-42fe-83a1-39bb284920bf
+20220419	12:51:21	INFO	MONGO & POSTGRES SEARCH	ashley@gmail.com	User searched for NASDAQ	e9e2c101-2008-4496-9d37-ecec6704f97c
