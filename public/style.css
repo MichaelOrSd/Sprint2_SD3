@@ -359,7 +359,7 @@ main p {
   color: red;
 }
 
-footer {
+#footer {
   color: #777;
   text-align: center;
   margin: 80px auto 20px;

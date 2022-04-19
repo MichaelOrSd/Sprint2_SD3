@@ -166,3 +166,9 @@
 20220419	12:49:17	INFO	MONGO & POSTGRES SEARCH	ashley@gmail.com	User searched for NASDAQ	1a2dc1fe-a5ca-40de-bd0b-65423a41cb49
 20220419	12:50:54	INFO	MONGO & POSTGRES SEARCH	ashley@gmail.com	User searched for NASDAQ	8289e2b5-0053-42fe-83a1-39bb284920bf
 20220419	12:51:21	INFO	MONGO & POSTGRES SEARCH	ashley@gmail.com	User searched for NASDAQ	e9e2c101-2008-4496-9d37-ecec6704f97c
+20220419	12:51:46	INFO	LOGOUT	ashley@gmail.com	A user logged out	7f231bb5-d991-4b3e-8725-b0f078ad74bb
+20220419	12:51:53	INFO	LOGIN	ashley@gmail.com	A user logged in	53a96524-98a6-4a36-900a-2772bbaa870b
+20220419	12:52:34	INFO	LOGOUT	ashley@gmail.com	A user logged out	2a957143-b8b0-4d41-8875-4c04a86a6283
+20220419	12:54:58	INFO	LOGIN	ashley@gmail.com	A user logged in	3d2e48eb-a691-4861-93b9-1943db7f1353
+20220419	12:56:11	INFO	LOGOUT	ashley@gmail.com	A user logged out	26e158b2-2f34-4222-bda4-939f16b552a8
+20220419	12:57:00	INFO	LOGIN	ashley@gmail.com	A user logged in	1339e5d3-6e19-44ee-8193-31ea60860a6b
