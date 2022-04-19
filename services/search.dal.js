@@ -10,12 +10,38 @@ async function getEverything() {
 
   return results;
 }
-async function getByFirstName(name) {
+
+async function getByFirstName(input) {
   await client.connect();
   const cursor = client
     .db("Stock_Market")
     .collection("stock_info")
-    .find({ stock_name: name });
+    .find({ stock_name: input });
+  const results = await cursor.toArray();
+
+  return results;
+}
+
+// stock_market
+// stock_name
+// stock_symbol
+async function getByStockMarket(input) {
+  await client.connect();
+  const cursor = client
+    .db("Stock_Market")
+    .collection("stock_info")
+    .find({ stock_market: input });
+  const results = await cursor.toArray();
+
+  return results;
+}
+
+async function getByStockSymbol(input) {
+  await client.connect();
+  const cursor = client
+    .db("Stock_Market")
+    .collection("stock_info")
+    .find({ stock_symbol: input });
   const results = await cursor.toArray();
 
   return results;
@@ -24,4 +50,6 @@ async function getByFirstName(name) {
 module.exports = {
   getEverything,
   getByFirstName,
+  getByStockMarket,
+  getByStockSymbol,
 };
