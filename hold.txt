@@ -1,4 +1,0 @@
-   <p><%= stock.stock_market %></p>
-        <p><%= stock.stock_name %></p>
-        <p><%= stock.stock_symbol %></p>
-        <p>$<%= stock.stock_cap %></p>

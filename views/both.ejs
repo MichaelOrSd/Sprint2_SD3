@@ -3,8 +3,8 @@
   <body>
     <%- include('./partials/nav.ejs') %>
     <main>
-      <h1>Mongo Search</h1>
-      <form action="/mongo" method="POST">
+      <h1>Mongo & Postgres Search</h1>
+      <form action="/both" method="POST">
         <div>
           <label for="search">Stocks</label>
           <input type="search" id="search" name="search" required />
@@ -28,16 +28,40 @@
           <div class="stockSymbol"><p><%= stock.stock_symbol %></p></div>
           <p><%= stock.stock_cap %></p>
         </div>
-        <% }) %> <% } %> <% if ( market.length > 0) { %> 
-        <% market.forEach(stock=>{%>
+        <% }) %> <% } %> <% if ( market.length > 0) { %> <%
+        market.forEach(stock=>{%>
         <div class="stockInfo">
           <p><%= stock.stock_market %></p>
           <div class="stockName"><p><%= stock.stock_name %></p></div>
           <div class="stockSymbol"><p><%= stock.stock_symbol %></p></div>
           <p><%= stock.stock_cap %></p>
         </div>
-        <% }) %> <% } %> <% if ( symbol.length > 0) { %> 
-        <% symbol.forEach(stock=>{%>
+        <% }) %> <% } %> <% if ( symbol.length > 0) { %> <%
+        symbol.forEach(stock=>{%>
+        <div class="stockInfo">
+          <p><%= stock.stock_market %></p>
+          <div class="stockName"><p><%= stock.stock_name %></p></div>
+          <div class="stockSymbol"><p><%= stock.stock_symbol %></p></div>
+          <p><%= stock.stock_cap %></p>
+        </div>
+        <% }) %> <% } %> <% if (searchByMarket.length > 0) { %>
+        <%searchByMarket.forEach(stock=>{%>
+        <div class="stockInfo">
+          <p><%= stock.stock_market %></p>
+          <div class="stockName"><p><%= stock.stock_name %></p></div>
+          <div class="stockSymbol"><p><%= stock.stock_symbol %></p></div>
+          <p><%= stock.stock_cap %></p>
+        </div>
+        <% }) %> <% } %> <% if ( searchByName.length > 0) { %> <%
+        searchByName.forEach(stock=>{%>
+        <div class="stockInfo">
+          <p><%= stock.stock_market %></p>
+          <div class="stockName"><p><%= stock.stock_name %></p></div>
+          <div class="stockSymbol"><p><%= stock.stock_symbol %></p></div>
+          <p><%= stock.stock_cap %></p>
+        </div>
+        <% }) %> <% } %> <% if ( searchBySymbol.length > 0) { %> <%
+        searchBySymbol.forEach(stock=>{%>
         <div class="stockInfo">
           <p><%= stock.stock_market %></p>
           <div class="stockName"><p><%= stock.stock_name %></p></div>

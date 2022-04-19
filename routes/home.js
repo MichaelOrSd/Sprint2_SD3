@@ -24,6 +24,8 @@ myEmitter.on('log', (event, user, level, msg) =>
 const usersDal = require('../services/users.dal');
 const stockDal = require('../services/stockInfo.dal');
 const { getByFirstName } = require('../services/search.dal');
+const { getByStockMarket } = require('../services/search.dal');
+const { getByStockSymbol } = require('../services/search.dal');
 
 const initializePassport = require('../scripts/passport-config');
 const { hash } = require('bcrypt');
@@ -81,18 +83,35 @@ app.post('/login', async (req, res) => {
       hashedPassword2
     );
     users1.push(user);
-    if (user.length === 0){
-      myEmitter.emit('log', 'ERROR', req.body.email, 'LOGIN', 'Incorrect Email or Password Used');
+    if (user.length === 0) {
+      myEmitter.emit(
+        'log',
+        'ERROR',
+        req.body.email,
+        'LOGIN',
+        'Incorrect Email or Password Used'
+      );
       res.render('login.ejs', {
         messages: { error: 'Incorrect Email Or Password D:' },
       });
-    } 
-    else {
-      myEmitter.emit('log', 'INFO', req.body.email, 'LOGIN', 'A user logged in');
+    } else {
+      myEmitter.emit(
+        'log',
+        'INFO',
+        req.body.email,
+        'LOGIN',
+        'A user logged in'
+      );
       res.render('index.ejs', { user });
     }
   } catch {
-    myEmitter.emit('log', 'ERROR', req.body.email, 'LOGIN', 'Incorrect Email or Password Used');
+    myEmitter.emit(
+      'log',
+      'ERROR',
+      req.body.email,
+      'LOGIN',
+      'Incorrect Email or Password Used'
+    );
     res.render('login.ejs', {
       messages: { error: 'Incorrect Email Or Password D:' },
     });
@@ -132,9 +151,15 @@ app.post('/register', async (req, res) => {
 
 app.delete('/logout', (req, res) => {
   // req.logOut();
-  myEmitter.emit('log', 'INFO', users1[0].email || users1[0][0].email, 'LOGOUT', 'A user logged out');
+  myEmitter.emit(
+    'log',
+    'INFO',
+    users1[0].email || users1[0][0].email,
+    'LOGOUT',
+    'A user logged out'
+  );
   res.redirect('/login');
-  
+
   users1 = [];
 });
 
@@ -159,8 +184,14 @@ app.post('/postgres', checkAuthenticated, async (req, res) => {
       searchByMarket.length === 0 &&
       searchByName.length === 0 &&
       searchBySymbol.length === 0
-    ){
-      myEmitter.emit('log', 'ERROR', users1[0].email || users1[0][0].email, 'SEARCH', ('Error searching for ') + input);
+    ) {
+      myEmitter.emit(
+        'log',
+        'ERROR',
+        users1[0].email || users1[0][0].email,
+        'POSTGRES SEARCH',
+        'Error searching for ' + input
+      );
       res.render('postgres.ejs', {
         messages: { error: 'Cannot Find Anything! Try: NASDAQ or NEWS ' },
         searchByMarket,
@@ -168,7 +199,13 @@ app.post('/postgres', checkAuthenticated, async (req, res) => {
         searchBySymbol,
       });
     } else {
-      myEmitter.emit('log', 'INFO', users1[0].email || users1[0][0].email, 'SEARCH', ('User searched for ') + input);
+      myEmitter.emit(
+        'log',
+        'INFO',
+        users1[0].email || users1[0][0].email,
+        'POSTGRES SEARCH',
+        'User searched for ' + input
+      );
       res.render('postgres.ejs', {
         searchByMarket,
         searchByName,
@@ -176,7 +213,13 @@ app.post('/postgres', checkAuthenticated, async (req, res) => {
       });
     }
   } catch {
-    myEmitter.emit('log', 'ERROR', users1[0].email || users1[0][0].email, 'SEARCH', ('Error searching for ') + input);
+    myEmitter.emit(
+      'log',
+      'ERROR',
+      users1[0].email || users1[0][0].email,
+      'POSTGRES SEARCH',
+      'Error searching for ' + input
+    );
     res.render('postgres.ejs', {
       messages: { error: 'Cannot Find Anything! Try: NASDAQ or NEWS' },
       searchByMarket,
@@ -186,20 +229,152 @@ app.post('/postgres', checkAuthenticated, async (req, res) => {
   }
 });
 
-app.get('/mongo', async (req, res) => {
-  let results = [];
-
-  res.render('mongoSearch.ejs', { results });
+app.get('/mongo', checkAuthenticated, async (req, res) => {
+  const market = [];
+  const stockName = [];
+  const symbol = [];
+  res.render('mongoSearch.ejs', {
+    market,
+    stockName,
+    symbol,
+  });
 });
 
-app.post('/mongo', async (req, res) => {
+app.post('/mongo', checkAuthenticated, async (req, res) => {
   try {
-    const input = req.body.search;
-    let results = await getByFirstName(input);
-
-    res.render('mongoSearch.ejs', { results });
+    const input = await req.body.search;
+    let stockName = (await getByFirstName(input)) || [];
+    let market = (await getByStockMarket(input)) || [];
+    let symbol = (await getByStockSymbol(input)) || [];
+    if (stockName.length === 0 && market.length === 0 && symbol.length === 0) {
+      myEmitter.emit(
+        'log',
+        'ERROR',
+        users1[0].email || users1[0][0].email,
+        'MONGO SEARCH',
+        'Error searching for ' + input
+      );
+      res.render('mongoSearch.ejs', {
+        messages: { error: 'Cannot Find Anything! Try: NASDAQ or WFM ' },
+        market,
+        stockName,
+        symbol,
+      });
+    } else {
+      myEmitter.emit(
+        'log',
+        'INFO',
+        users1[0].email || users1[0][0].email,
+        'MONGO SEARCH',
+        'User searched for ' + input
+      );
+      res.render('mongoSearch.ejs', {
+        market,
+        stockName,
+        symbol,
+      });
+    }
   } catch {
-    res.render('mongoSearch.ejs', { results });
+    myEmitter.emit(
+      'log',
+      'ERROR',
+      users1[0].email || users1[0][0].email,
+      'MONGO SEARCH',
+      'Error searching for ' + input
+    );
+    res.render('mongoSearch.ejs', {
+      messages: { error: 'Cannot Find Anything! Try: NASDAQ or WFM' },
+      market,
+      stockName,
+      symbol,
+    });
+  }
+});
+
+app.get('/both', checkAuthenticated, async (req, res) => {
+  const market = [];
+  const stockName = [];
+  const symbol = [];
+  const searchByMarket = [];
+  const searchByName = [];
+  const searchBySymbol = [];
+  res.render('both.ejs', {
+    searchByMarket,
+    searchByName,
+    searchBySymbol,
+    market,
+    stockName,
+    symbol,
+  });
+});
+
+app.post('/both', checkAuthenticated, async (req, res) => {
+  try {
+    const input = await req.body.search;
+    let stockName = (await getByFirstName(input)) || [];
+    let market = (await getByStockMarket(input)) || [];
+    let symbol = (await getByStockSymbol(input)) || [];
+    const searchByMarket = (await stockDal.getStockByMarket(input)) || [];
+    const searchByName = (await stockDal.getStockByName(input)) || [];
+    const searchBySymbol = (await stockDal.getStockBySymbol(input)) || [];
+    if (
+      stockName.length === 0 &&
+      market.length === 0 &&
+      symbol.length === 0 &&
+      searchByMarket.length === 0 &&
+      searchByName.length === 0 &&
+      searchBySymbol.length === 0
+    ) {
+      myEmitter.emit(
+        'log',
+        'ERROR',
+        users1[0].email || users1[0][0].email,
+        'MONGO & POSTGRES SEARCH',
+        'Error searching for ' + input
+      );
+      res.render('both.ejs', {
+        messages: { error: 'Cannot Find Anything! Try: NYSE or NEWS ' },
+        market,
+        stockName,
+        symbol,
+        searchByMarket,
+        searchByName,
+        searchBySymbol,
+      });
+    } else {
+      myEmitter.emit(
+        'log',
+        'INFO',
+        users1[0].email || users1[0][0].email,
+        'MONGO & POSTGRES SEARCH',
+        'User searched for ' + input
+      );
+      res.render('both.ejs', {
+        searchByMarket,
+        searchByName,
+        searchBySymbol,
+        market,
+        stockName,
+        symbol,
+      });
+    }
+  } catch {
+    myEmitter.emit(
+      'log',
+      'ERROR',
+      users1[0].email || users1[0][0].email,
+      'MONGO & POSTGRES SEARCH',
+      'Error searching for ' + input
+    );
+    res.render('both.ejs', {
+      messages: { error: 'Cannot Find Anything! Try: NYSE or NEWS' },
+      searchByMarket,
+      searchByName,
+      searchBySymbol,
+      market,
+      stockName,
+      symbol,
+    });
   }
 });
 
