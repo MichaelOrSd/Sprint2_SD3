@@ -1,12 +1,20 @@
 <html>
   <%- include('./partials/header.ejs') %>
   <body>
+    <link rel="stylesheet" type="text/css" href="/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=BIZ+UDPMincho&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cookie&display=swap" rel="stylesheet">
     <%- include('./partials/nav.ejs') %>
     <main>
       <h1>Hi <%= user[0].username || user[0][0].username %></h1>
       <form action="/logout?_method=DELETE" method="POST">
         <button type="submit">Log Out</button>
       </form>
+      <p>Please choose a database (or both) to search Stock Market information.</p>
     </main>
     <%- include('./partials/footer.ejs') %>
   </body>

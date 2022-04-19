@@ -65,3 +65,27 @@
 20220419	11:01:45	ERROR	BOTH SEARCH	w@w	Error searching for ffff	fbc23691-f432-4e06-ac9a-a729473b34fb
 20220419	11:02:48	INFO	LOGIN	w@w	A user logged in	f169ac76-e2d9-4192-ba19-09589607b912
 20220419	11:03:05	INFO	MONGO SEARCH	w@w	User searched for NYSE	1e38b53f-511e-4b33-a73e-0fc4f907553b
+20220419	09:58:41	INFO	LOGIN	ashley@gmail.com	A user logged in	a5a884a8-58da-4348-8cd3-3c3f0a2b5d20
+20220419	10:06:16	INFO	LOGIN	ashley@gmail.com	A user logged in	37959ae4-21cb-4ecd-9c66-06a9f33270c7
+20220419	10:06:25	INFO	LOGIN	ashley@gmail.com	A user logged in	f2f84222-b6be-4851-a471-ad18e8422c0a
+20220419	10:07:05	INFO	LOGIN	ashley@gmail.com	A user logged in	38b8f073-febb-462a-92e3-39d17c9d637c
+20220419	10:07:57	INFO	LOGIN	ashley@gmail.com	A user logged in	03db0a12-d9e0-42b9-acd0-e526188f8be3
+20220419	10:12:09	INFO	LOGIN	ashley@gmail.com	A user logged in	171fc557-0740-478f-8301-57594fe856b4
+20220419	10:13:12	INFO	LOGIN	ashley@gmail.com	A user logged in	1be7855e-dd7b-43b8-ba59-53c50a6ffe5a
+20220419	10:13:26	INFO	LOGIN	ashley@gmail.com	A user logged in	26521afd-ec9b-4b52-9ac2-b96bbb064872
+20220419	10:13:32	INFO	LOGIN	ashley@gmail.com	A user logged in	4baadad3-20e5-41ed-b1ce-4e121b9e7dd6
+20220419	10:13:49	INFO	LOGIN	ashley@gmail.com	A user logged in	4bdd5440-920d-4243-9a14-d94e9d5e6495
+20220419	10:15:35	INFO	LOGIN	ashley@gmail.com	A user logged in	2973d775-28d8-40b5-a8c2-6d602716390e
+20220419	10:16:05	INFO	LOGIN	ashley@gmail.com	A user logged in	6a8a20a9-1452-4f29-9f0a-41c088b0a02c
+20220419	10:16:20	INFO	LOGIN	ashley@gmail.com	A user logged in	52e837e9-4c03-4908-b9d6-64e6f6f9403f
+20220419	10:16:27	INFO	LOGIN	ashley@gmail.com	A user logged in	c19c4be9-53db-4a9b-b854-2ae0562ba6e4
+20220419	10:16:41	INFO	LOGIN	ashley@gmail.com	A user logged in	4d504245-b88e-472d-ab73-f09debfda437
+20220419	10:17:41	INFO	LOGIN	ashley@gmail.com	A user logged in	f15f06ce-830b-4bd2-9e64-aa9a5c1c98c2
+20220419	10:17:48	INFO	LOGIN	ashley@gmail.com	A user logged in	d6393b98-114f-4ebb-8cf1-6fd581eca56a
+20220419	10:19:05	INFO	LOGIN	ashley@gmail.com	A user logged in	20e61cfa-d4f2-4d35-9bb1-b95d3f6ce8e9
+20220419	10:21:06	INFO	LOGIN	ashley@gmail.com	A user logged in	e745712d-4026-4f48-91d1-f937ccc6cecb
+20220419	10:21:22	INFO	LOGIN	ashley@gmail.com	A user logged in	a5bb43fe-6b72-477b-af47-20c148fbee14
+20220419	10:21:45	INFO	LOGIN	ashley@gmail.com	A user logged in	95f6e0fc-731a-454c-a2be-857733306aa8
+20220419	10:54:13	INFO	LOGIN	ashley@gmail.com	A user logged in	7fd8c950-2fb0-4278-a72a-b8335ca2320b
+20220419	10:54:30	INFO	LOGIN	ashley@gmail.com	A user logged in	0e973820-cb48-45e6-a007-aaa32430f2a8
+20220419	10:54:46	INFO	LOGIN	ashley@gmail.com	A user logged in	42adf35f-5402-4ef9-a05c-4104517e54e8
