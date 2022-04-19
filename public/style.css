@@ -143,25 +143,24 @@ main p {
 /********* MONGO SEARCH **********/
 
 #mongoh1 {
-  font-family: "Righteous", sans-serif;
-  font-size: 3em;
-  background-color: #88f5ab;
+  font-family: "BIZ UDPMincho", sans-serif;
+  font-size: 2em;
   padding-bottom: 20px;
-  padding-top: 20px;
+  padding-top: 100px;
   padding-left: 20px;
 }
-
 
 #label {
   font-family: "BIZ UDPMincho", sans-serif;
   font-size: 1.5em;
-  padding-bottom: 10px;
+  padding-bottom: 20px;
   padding-left: 20px;
   padding-top: 10px;
 }
 
 #searchmongo {
   margin-bottom: 10px;
+  margin-top: 20px;
   margin-left: 20px;
 }
 
@@ -169,15 +168,67 @@ main p {
   margin-left: 20px;
 }
 
+#mongop2 {
+  font-family: "Righteous", sans-serif;
+  font-size: 2em;
+  padding-right: 160px;
+  padding-bottom: 20px;
+  padding-left: 100px;
+}
+
+#mongop3 {
+  font-family: "Righteous", sans-serif;
+  font-size: 2em;
+  padding-right: 150px;
+  padding-bottom: 20px;
+  
+}
+
+#mongop4 {
+  font-family: "Righteous", sans-serif;
+  font-size: 2em;
+  padding-right: 20px;
+  padding-bottom: 20px;
+  padding-left: 50px;
+  
+}
+
 #mongoresults {
   padding-left: 20px;
   padding-top: 20px;
 }
 
-.stock_market {
-  color: red;
+/**********  POSTGRES ***********/
+
+#postgresh1 {
+  font-family: "BIZ UDPMincho", sans-serif;
+  font-size: 2em;
+  padding-bottom: 20px;
+  padding-top: 100px;
+  padding-left: 20px;
+}
+
+#postgreslabel {
   font-family: "BIZ UDPMincho", sans-serif;
   font-size: 1.5em;
+  padding-bottom: 20px;
+  padding-left: 20px;
+  padding-top: 10px;
+}
+
+#searchpostgres {
+  margin-bottom: 10px;
+  margin-top: 20px;
+  margin-left: 20px;
+}
+
+#postgresbutton {
+  margin-left: 20px;
+}
+
+.stockInfo {
+  font-family: "BIZ UDPMincho", sans-serif;
+  font-size: 1em;
   padding-top: 20px;
   padding-left: 20px;
 }
@@ -187,6 +238,37 @@ main p {
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
+}
+
+#p1 {
+  font-family: "Righteous", sans-serif;
+  font-size: 2em;
+  padding-left: 25px;
+  padding-right: 100px;
+}
+
+#p2 {
+  font-family: "Righteous", sans-serif;
+  font-size: 2em;
+  padding-right: 130px;
+  padding-bottom: 20px;
+}
+
+#p3 {
+  font-family: "Righteous", sans-serif;
+  font-size: 2em;
+  padding-right: 130px;
+  padding-bottom: 20px;
+  
+}
+
+#p4 {
+  font-family: "Righteous", sans-serif;
+  font-size: 2em;
+  padding-right: 100px;
+  padding-bottom: 20px;
+  padding-left: 50px;
+  
 }
 
 #resultContainer {

@@ -4,22 +4,24 @@
   <body>
     <%- include('./partials/nav.ejs') %>
     <main>
-      <h1>Mongo Search</h1>
+      <h1 id="mongoh1">Search MongoDB Database</h1>
       <form action="/mongo" method="POST">
         <div>
-          <label for="search">Stocks</label>
-          <input type="search" id="search" name="search" required />
+          <label id="label" for="search">Try stock name ie: "Qwest Corporation</label>
+          </div>
+          <div>
+          <input id="searchmongo" type="search" id="search" name="search" required />
         </div>
-        <button type="submit">Search</button>
+        <button id="mongobutton" type="submit">Search</button>
         <p id="error">
           <% if(messages.error) { %> <%= messages.error %> <% } %>
         </p>
       </form>
       <div id="filter">
-        <p><strong>Market</strong></p>
-        <p class="stockName"><strong>Name</strong></p>
-        <p class="stockSymbol"><strong>Symbol</strong></p>
-        <p><strong>Cap</strong></p>
+        <p id="p1"><strong>MARKET</strong></p>
+        <p id="mongop2" class="stockName"><strong>NAME</strong></p>
+        <p id="mongop3" class="stockSymbol"><strong>SYMBOL</strong></p>
+        <p id="mongop4"><strong>CAP</strong></p>
       </div>
       <div id="resultContainer">
         <% if (stockName.length > 0) { %> <% stockName.forEach(stock=>{%>
@@ -49,5 +51,9 @@
       </div>
       <%- include('./partials/footer.ejs') %>
     </main>
+    <link rel="stylesheet" type="text/css" href="/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=BIZ+UDPMincho&display=swap" rel="stylesheet">
   </body>
 </html>

@@ -4,22 +4,24 @@
   <body>
     <%- include('./partials/nav.ejs') %>
     <main>
-      <h1>Postgres Search</h1>
+      <h1 id="postgresh1">Search PostgreSQL Database</h1>
       <form action="/postgres/" method="POST">
         <div>
-          <label for="search">Stocks</label>
-          <input type="search" id="search" name="search" required />
+          <label id="postgreslabel" for="search">Try stock market ie: NASDAQ</label>
+          </div>
+          <div>
+          <input type="search" id="searchpostgres" name="search" required />
         </div>
-        <button type="submit">Search</button>
+        <button id="postgresbutton" type="submit">Search</button>
         <p id="error">
           <% if(messages.error) { %> <%= messages.error %> <% } %>
         </p>
       </form>
       <div id="filter">
-        <p><strong>Market</strong></p>
-        <p class="stockName"><strong>Name</strong></p>
-        <p class="stockSymbol"><strong>Symbol</strong></p>
-        <p><strong>Cap</strong></p>
+        <p id="p1"><strong>MARKET</strong></p>
+        <p id="p2" class="stockName"><strong>NAME</strong></p>
+        <p id="p3" class="stockSymbol"><strong>SYMBOL</strong></p>
+        <p id="p4"><strong>CAP</strong></p>
       </div>
       <div id="resultContainer">
         <% if (searchByMarket.length > 0) { %>
@@ -50,5 +52,12 @@
       </div>
       <%- include('./partials/footer.ejs') %>
     </main>
+    <link rel="stylesheet" type="text/css" href="/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=BIZ+UDPMincho&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Righteous&display=swap" rel="stylesheet">
   </body>
 </html>
