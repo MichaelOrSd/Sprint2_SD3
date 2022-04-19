@@ -9,6 +9,7 @@ body {
 #loginhtml{
   background-color: #88f5ab
 }
+
 #loginheader {
   font-family: "Righteous", sans-serif;
   font-size: 3em;
@@ -32,6 +33,33 @@ body {
 }
 
 /*********** REGISTER ***********/
+
+
+#registerhtml{
+  background-color: #88f5ab
+}
+
+#registerh1 {
+  font-family: "Righteous", sans-serif;
+  font-size: 3em;
+}
+
+#registerlabels {
+  font-family: "BIZ UDPMincho", sans-serif;
+  font-size: 1.5em;
+  margin-bottom: 10px;
+}
+
+#registerbutton {
+  font-size: 1em;
+  margin-bottom: 30px;
+  margin-top: 20px;
+}
+
+#login {
+  font-family: "BIZ UDPMincho", sans-serif;
+  font-size: 1.5em;
+}
 
 a:hover {
   color: grey;
