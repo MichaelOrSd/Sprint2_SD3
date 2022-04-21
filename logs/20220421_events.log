@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 20220421	14:13:02	INFO	REGISTER	78af56f7 wesley.squire@keyin.com	A_New_User_Registered	16d2bd21-514f-472d-a38b-71b8662f5170
 20220421	14:13:09	INFO	LOGIN	78af56f7 wesley.squire@keyin.com	A_User_Logged_In	022b76f6-4f51-495d-a3d9-9679965a545c
 20220421	14:13:19	INFO	MONGO_SEARCH	78af56f7 wesley.squire@keyin.com	User_Searched_For: NASDAQ	1e0ba851-460f-404a-8a25-1b479351dec8
