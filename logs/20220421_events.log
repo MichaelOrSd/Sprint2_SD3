@@ -1,0 +1,41 @@
+20220421	03:12:08	INFO	REGISTER	wesley@wesley	A New User Registered	85a02ba8-f73e-4cef-8cb2-70976b58a9c9
+20220421	03:12:13	ERROR	LOGIN	wesley@wesley	Incorrect Email or Password Used	aad5fbe3-32e2-454f-b741-450950980b1b
+20220421	03:14:34	ERROR	REGISTER	wesley@wesley	Email already in use	16c01eab-54a5-4953-ab53-ddce63cc3fc3
+20220421	03:14:46	INFO	LOGIN	wesley@wesley	A user logged in	6cfdb958-005e-4484-9918-770a2ddd02c4
+20220421	03:15:01	INFO	MONGO SEARCH	wesley@wesley	User searched for NASDAQ	ff12446e-3c02-400b-b08c-10b50e3a4df2
+20220421	03:15:16	INFO	POSTGRES SEARCH	wesley@wesley	User searched for NASDAQ	da551325-1cab-41c2-a964-92541d6aebfe
+20220421	03:15:24	INFO	MONGO & POSTGRES SEARCH	wesley@wesley	User searched for NASDAQ	401a259a-21ae-499e-b504-606e9fbdc90e
+20220421	03:21:46	INFO	LOGIN	undefined wesley@wesley	A user logged in	d5bb3980-e90a-48cd-a87d-1a2ddb6300de
+20220421	03:22:03	INFO	POSTGRES SEARCH	f88f0a9d wesley@wesley	User searched for NASDAQ	b69a3d2b-1fd8-443e-bfdb-bb8bc7c1c8cf
+20220421	03:22:41	INFO	LOGIN	undefined w@w	A user logged in	fcd5fc85-d3eb-4afb-9833-d8a5c190e334
+20220421	03:23:18	INFO	LOGIN	7f7918a3 w@w	A user logged in	22ad2de5-4e91-4e7f-9236-eecefb298e7d
+20220421	03:23:39	INFO	LOGOUT	7f7918a3 w@w	A user logged out	73f6e8a6-80c5-483a-b21f-aa46ec093195
+20220421	03:23:49	INFO	REGISTER	447a520f brady@brady	A New User Registered	0191e90c-c87d-42aa-bdf9-67a2b57ece7d
+20220421	03:29:30	INFO	LOGIN	f88f0a9d wesley@wesley	A_user_logged_in	b7a72736-bdeb-47bd-b5a7-5d890e6c52e6
+20220421	03:30:36	INFO	LOGIN	f88f0a9d wesley@wesley	A_User_Logged_In	a12e1c6b-16c3-4107-aed9-c6f77797e94b
+20220421	03:30:53	INFO	MONGO_SEARCH	f88f0a9d wesley@wesley	User_Searched_For_NASDAQ	7a801942-675f-4ac2-8040-7803ededa78e
+20220421	03:32:09	INFO	LOGIN	f88f0a9d wesley@wesley	A_User_Logged_In	e5aac217-d79f-4202-9143-a174b0d94886
+20220421	03:32:17	INFO	POSTGRES_SEARCH	f88f0a9d wesley@wesley	User_Searched_For: NASDAQ	247d2a9f-30a3-4f25-be86-6bdeb738045b
+20220421	03:32:22	ERROR	MONGO_&_POSTGRES_SEARCH	f88f0a9d wesley@wesley	Error_Searching_For: fggffg	9e377053-af3f-4d4e-9bbd-73167c015c4a
+20220421	03:32:29	INFO	MONGO_&_POSTGRES_SEARCH	f88f0a9d wesley@wesley	User_Searched_For: NYSE	0b6e08f0-4dcc-4406-a418-06b009b29ab0
+20220421	03:33:49	INFO	MONGO_SEARCH	f88f0a9d wesley@wesley	User_Searched_For: NASDAQ	dc17f786-a2a7-40f3-9456-31612a709868
+20220421	03:39:31	INFO	MONGO_SEARCH	f88f0a9d wesley@wesley	User_Searched_For: NASDAQ	5cb740d1-6069-4642-9d85-62c040c23c3b
+20220421	03:58:18	INFO	LOGOUT	f88f0a9d wesley@wesley	A_User_Logged_Out	405098f6-5599-4a3d-8d12-08c073387f18
+20220421	03:58:28	INFO	LOGIN	f88f0a9d wesley@wesley	A_User_Logged_In	d5f82579-6e70-45b7-8075-8cdff5ce08fa
+20220421	03:58:38	INFO	MONGO_SEARCH	f88f0a9d wesley@wesley	User_Searched_For: NASDAQ	b64d1341-4a9a-452b-99d2-0a04c4ebe744
+20220421	03:59:54	INFO	LOGOUT	f88f0a9d wesley@wesley	A_User_Logged_Out	33dc3c6d-0321-4213-ade4-0c4462795e84
+20220421	04:00:10	INFO	LOGIN	f88f0a9d wesley@wesley	A_User_Logged_In	234e4492-400c-46f7-beef-59fd63c61af7
+20220421	04:00:19	INFO	POSTGRES_SEARCH	f88f0a9d wesley@wesley	User_Searched_For: NASDAQ	fcc2a1bb-f047-445c-9b96-c20285b9b98e
+20220421	04:00:33	INFO	MONGO_SEARCH	f88f0a9d wesley@wesley	User_Searched_For: NASDAQ	f3823dbc-90b1-41e2-91c0-51ecaebbf781
+20220421	04:00:40	INFO	MONGO_&_POSTGRES_SEARCH	f88f0a9d wesley@wesley	User_Searched_For: NASDAQ	70859c50-7038-4691-9789-ebb06cd62802
+20220421	04:01:52	INFO	LOGOUT	f88f0a9d wesley@wesley	A_User_Logged_Out	6227fe7a-9c22-48b7-ad73-6055dcf92a82
+20220421	04:09:37	INFO	LOGIN	f88f0a9d wesley@wesley	A_User_Logged_In	751dc19e-ce45-4a72-87e5-3dddea09d50b
+20220421	04:09:47	INFO	MONGO_SEARCH	f88f0a9d wesley@wesley	User_Searched_For: NASDAQ	eeaa8f35-c15d-469f-a3bd-c27e57e89c37
+20220421	04:09:54	INFO	POSTGRES_SEARCH	f88f0a9d wesley@wesley	User_Searched_For: NASDAQ	2b7e1af6-4ff1-4317-b649-519ae9741c5b
+20220421	04:09:58	INFO	MONGO_&_POSTGRES_SEARCH	f88f0a9d wesley@wesley	User_Searched_For: NASDAQ	ce16b4bb-9614-481f-88ef-48e96e969fea
+20220421	04:20:55	INFO	MONGO_SEARCH	f88f0a9d wesley@wesley	User_Searched_For: NASDAQ	8ea66b9d-c42c-478e-8302-5d270e004988
+20220421	04:21:03	INFO	POSTGRES_SEARCH	f88f0a9d wesley@wesley	User_Searched_For: NASDAQ	cc177c75-772b-4cb1-b091-e0a9b9794c25
+20220421	04:21:48	ERROR	MONGO_SEARCH	f88f0a9d wesley@wesley	Error_Searching_For: ULTI	595f611d-bf8f-4ced-a843-909ca8d3e4ad
+20220421	04:21:58	ERROR	MONGO_SEARCH	f88f0a9d wesley@wesley	Error_Searching_For: XLNX	acbaf462-1ca1-40fd-a551-9205cbfcef32
+20220421	04:22:04	INFO	MONGO_SEARCH	f88f0a9d wesley@wesley	User_Searched_For: NASDAQ	a77ed12a-18d8-4885-b0bd-0795ce870f0d
+20220421	04:22:10	INFO	MONGO_SEARCH	f88f0a9d wesley@wesley	User_Searched_For: WFM	db329029-ad81-463a-8b75-ec5f8d8a26b6

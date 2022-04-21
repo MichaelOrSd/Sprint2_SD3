@@ -8,9 +8,15 @@
       <form action="/both" method="POST">
         <div>
           <label id="bothlabel" for="search">Stocks</label>
-          </div>
-          <div>
-          <input id="searchboth" type="search" id="search" name="search" required />
+        </div>
+        <div>
+          <input
+            id="searchboth"
+            type="search"
+            id="search"
+            name="search"
+            required
+          />
         </div>
         <button id="bothbutton" type="submit">Search</button>
         <p id="error">
@@ -31,16 +37,16 @@
           <div class="stockSymbol"><p><%= stock.stock_symbol %></p></div>
           <p><%= stock.stock_cap %></p>
         </div>
-        <% }) %> <% } %> <% if ( market.length > 0) { %> <%
-        market.forEach(stock=>{%>
+        <% }) %> <% } %> <% if ( market.length > 0) { %>
+        <%market.forEach(stock=>{%>
         <div class="stockInfo">
           <p><%= stock.stock_market %></p>
           <div class="stockName"><p><%= stock.stock_name %></p></div>
           <div class="stockSymbol"><p><%= stock.stock_symbol %></p></div>
           <p><%= stock.stock_cap %></p>
         </div>
-        <% }) %> <% } %> <% if ( symbol.length > 0) { %> <%
-        symbol.forEach(stock=>{%>
+        <% }) %> <% } %> <% if ( symbol.length > 0) { %>
+        <%symbol.forEach(stock=>{%>
         <div class="stockInfo">
           <p><%= stock.stock_market %></p>
           <div class="stockName"><p><%= stock.stock_name %></p></div>
@@ -55,16 +61,16 @@
           <div class="stockSymbol"><p><%= stock.stock_symbol %></p></div>
           <p><%= stock.stock_cap %></p>
         </div>
-        <% }) %> <% } %> <% if ( searchByName.length > 0) { %> <%
-        searchByName.forEach(stock=>{%>
+        <% }) %> <% } %> <% if ( searchByName.length > 0) { %>
+        <%searchByName.forEach(stock=>{%>
         <div class="stockInfo">
           <p><%= stock.stock_market %></p>
           <div class="stockName"><p><%= stock.stock_name %></p></div>
           <div class="stockSymbol"><p><%= stock.stock_symbol %></p></div>
           <p><%= stock.stock_cap %></p>
         </div>
-        <% }) %> <% } %> <% if ( searchBySymbol.length > 0) { %> <%
-        searchBySymbol.forEach(stock=>{%>
+        <% }) %> <% } %> <% if ( searchBySymbol.length > 0) { %> 
+        <%searchBySymbol.forEach(stock=>{%>
         <div class="stockInfo">
           <p><%= stock.stock_market %></p>
           <div class="stockName"><p><%= stock.stock_name %></p></div>
@@ -75,12 +81,5 @@
       </div>
       <%- include('./partials/footer.ejs') %>
     </main>
-    <link rel="stylesheet" type="text/css" href="/style.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=BIZ+UDPMincho&display=swap" rel="stylesheet">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Righteous&display=swap" rel="stylesheet">
   </body>
 </html>

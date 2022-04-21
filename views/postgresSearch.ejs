@@ -7,9 +7,11 @@
       <h1 id="postgresh1">Search PostgreSQL Database</h1>
       <form action="/postgres/" method="POST">
         <div>
-          <label id="postgreslabel" for="search">Try stock market ie: NASDAQ</label>
-          </div>
-          <div>
+          <label id="postgreslabel" for="search"
+            >Try stock market ie: NASDAQ</label
+          >
+        </div>
+        <div>
           <input type="search" id="searchpostgres" name="search" required />
         </div>
         <button id="postgresbutton" type="submit">Search</button>
@@ -33,7 +35,7 @@
           <p><%= stock.stock_cap %></p>
         </div>
         <% }) %> <% } %> <% if ( searchByName.length > 0) { %> 
-        <% searchByName.forEach(stock=>{%>
+        <%searchByName.forEach(stock=>{%>
         <div class="stockInfo">
           <p><%= stock.stock_market %></p>
           <div class="stockName"><p><%= stock.stock_name %></p></div>
@@ -41,7 +43,7 @@
           <p><%= stock.stock_cap %></p>
         </div>
         <% }) %> <% } %> <% if ( searchBySymbol.length > 0) { %> 
-        <% searchBySymbol.forEach(stock=>{%>
+        <%searchBySymbol.forEach(stock=>{%>
         <div class="stockInfo">
           <p><%= stock.stock_market %></p>
           <div class="stockName"><p><%= stock.stock_name %></p></div>
@@ -52,12 +54,5 @@
       </div>
       <%- include('./partials/footer.ejs') %>
     </main>
-    <link rel="stylesheet" type="text/css" href="/style.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=BIZ+UDPMincho&display=swap" rel="stylesheet">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Righteous&display=swap" rel="stylesheet">
   </body>
 </html>

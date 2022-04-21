@@ -12,7 +12,7 @@ const fsPromise = require('fs').promises;
 const crc32 = require('crc/crc32');
 
 // Logging events
-const logEvents = require('../scripts/logEvents');
+const logEvents = require('../javascript/logEvents');
 const EventEmitter = require('events');
 class MyEmitter extends EventEmitter {}
 const myEmitter = new MyEmitter();
@@ -27,7 +27,7 @@ const { getByFirstName } = require('../services/search.dal');
 const { getByStockMarket } = require('../services/search.dal');
 const { getByStockSymbol } = require('../services/search.dal');
 
-const initializePassport = require('../scripts/passport-config');
+const initializePassport = require('../javascript/passport-config');
 const { hash } = require('bcrypt');
 
 // const { json } = require('stream/consumers');
@@ -58,17 +58,8 @@ app.use(methodOverride('_method'));
 
 app.get('/', checkAuthenticated, (req, res) => {
   let name = users1 || [] || req.user.name;
-  let user = users1;
+  let user = users1 || [];
   res.render('index.ejs', { user, name });
-});
-
-app.get('/test', async (req, res) => {
-  // console.log(req.method);
-  let users = await usersDal.getUsers();
-  if (users.length === 0) res.render('norecord');
-  else {
-    res.render('test.ejs', { users });
-  }
 });
 
 app.get('/login', checkNotAuthenticated, (req, res, e) => {
@@ -82,14 +73,15 @@ app.post('/login', async (req, res) => {
       req.body.email,
       hashedPassword2
     );
+    console.log(user);
     users1.push(user);
     if (user.length === 0) {
       myEmitter.emit(
         'log',
         'ERROR',
-        req.body.email,
+        user[0].id + ' ' + req.body.email,
         'LOGIN',
-        'Incorrect Email or Password Used'
+        'Incorrect_Email_Or_Password_Used'
       );
       res.render('login.ejs', {
         messages: { error: 'Incorrect Email Or Password D:' },
@@ -98,9 +90,9 @@ app.post('/login', async (req, res) => {
       myEmitter.emit(
         'log',
         'INFO',
-        req.body.email,
+        user[0].id + ' ' + req.body.email,
         'LOGIN',
-        'A user logged in'
+        'A_User_Logged_In'
       );
       res.render('index.ejs', { user });
     }
@@ -108,9 +100,9 @@ app.post('/login', async (req, res) => {
     myEmitter.emit(
       'log',
       'ERROR',
-      req.body.email,
+      user[0].id + ' ' + req.body.email,
       'LOGIN',
-      'Incorrect Email or Password Used'
+      'Incorrect_Email_Or_Password Used'
     );
     res.render('login.ejs', {
       messages: { error: 'Incorrect Email Or Password D:' },
@@ -132,17 +124,35 @@ app.post('/register', async (req, res) => {
     let email = req.body.email;
     let emailCheck = await usersDal.getUsersByEmail(email);
     if (emailCheck.length === 0) {
-      myEmitter.emit('log', 'INFO', email, 'REGISTER', 'A New User Registered');
+      myEmitter.emit(
+        'log',
+        'INFO',
+        crc + ' ' + email,
+        'REGISTER',
+        'A_New_User_Registered'
+      );
       await usersDal.addUser(crc, email, name, hashedPassword);
       res.redirect('/login');
     } else {
-      myEmitter.emit('log', 'ERROR', email, 'REGISTER', 'Email already in use');
+      myEmitter.emit(
+        'log',
+        'ERROR',
+        crc + ' ' + email,
+        'REGISTER',
+        'Email_Already_In_Use'
+      );
       res.render('register.ejs', {
         messages: { error: 'Email is in use D:' },
       });
     }
   } catch {
-    myEmitter.emit('log', 'ERROR', email, 'REGISTER', 'Email already in use');
+    myEmitter.emit(
+      'log',
+      'ERROR',
+      crc + ' ' + email,
+      'REGISTER',
+      'Email_Already_In_Use'
+    );
     res.render('register.ejs', {
       messages: { error: 'Email is in use D:' },
     });
@@ -154,9 +164,11 @@ app.delete('/logout', (req, res) => {
   myEmitter.emit(
     'log',
     'INFO',
-    users1[0].email || users1[0][0].email,
+    (users1[0].id || users1[0][0].id) +
+      ' ' +
+      (users1[0].email || users1[0][0].email),
     'LOGOUT',
-    'A user logged out'
+    'A_User_Logged_Out'
   );
   res.redirect('/login');
 
@@ -167,7 +179,7 @@ app.get('/postgres', checkAuthenticated, async (req, res) => {
   const searchByMarket = [];
   const searchByName = [];
   const searchBySymbol = [];
-  res.render('postgres.ejs', {
+  res.render('postgresSearch.ejs', {
     searchByMarket,
     searchByName,
     searchBySymbol,
@@ -188,11 +200,13 @@ app.post('/postgres', checkAuthenticated, async (req, res) => {
       myEmitter.emit(
         'log',
         'ERROR',
-        users1[0].email || users1[0][0].email,
-        'POSTGRES SEARCH',
-        'Error searching for ' + input
+        (users1[0].id || users1[0][0].id) +
+          ' ' +
+          (users1[0].email || users1[0][0].email),
+        'POSTGRES_SEARCH',
+        'Error_Searching_For: ' + input
       );
-      res.render('postgres.ejs', {
+      res.render('postgresSearch.ejs', {
         messages: { error: 'Cannot Find Anything! Try: NASDAQ or NEWS ' },
         searchByMarket,
         searchByName,
@@ -202,11 +216,13 @@ app.post('/postgres', checkAuthenticated, async (req, res) => {
       myEmitter.emit(
         'log',
         'INFO',
-        users1[0].email || users1[0][0].email,
-        'POSTGRES SEARCH',
-        'User searched for ' + input
+        (users1[0].id || users1[0][0].id) +
+          ' ' +
+          (users1[0].email || users1[0][0].email),
+        'POSTGRES_SEARCH',
+        'User_Searched_For: ' + input
       );
-      res.render('postgres.ejs', {
+      res.render('postgresSearch.ejs', {
         searchByMarket,
         searchByName,
         searchBySymbol,
@@ -216,11 +232,13 @@ app.post('/postgres', checkAuthenticated, async (req, res) => {
     myEmitter.emit(
       'log',
       'ERROR',
-      users1[0].email || users1[0][0].email,
-      'POSTGRES SEARCH',
-      'Error searching for ' + input
+      (users1[0].id || users1[0][0].id) +
+        ' ' +
+        (users1[0].email || users1[0][0].email),
+      'POSTGRES_SEARCH',
+      'Error_Searching_For: ' + input
     );
-    res.render('postgres.ejs', {
+    res.render('postgresSearch.ejs', {
       messages: { error: 'Cannot Find Anything! Try: NASDAQ or NEWS' },
       searchByMarket,
       searchByName,
@@ -250,9 +268,11 @@ app.post('/mongo', checkAuthenticated, async (req, res) => {
       myEmitter.emit(
         'log',
         'ERROR',
-        users1[0].email || users1[0][0].email,
-        'MONGO SEARCH',
-        'Error searching for ' + input
+        (users1[0].id || users1[0][0].id) +
+          ' ' +
+          (users1[0].email || users1[0][0].email),
+        'MONGO_SEARCH',
+        'Error_Searching_For: ' + input
       );
       res.render('mongoSearch.ejs', {
         messages: { error: 'Cannot Find Anything! Try: NASDAQ or WFM ' },
@@ -264,9 +284,11 @@ app.post('/mongo', checkAuthenticated, async (req, res) => {
       myEmitter.emit(
         'log',
         'INFO',
-        users1[0].email || users1[0][0].email,
-        'MONGO SEARCH',
-        'User searched for ' + input
+        (users1[0].id || users1[0][0].id) +
+          ' ' +
+          (users1[0].email || users1[0][0].email),
+        'MONGO_SEARCH',
+        'User_Searched_For: ' + input
       );
       res.render('mongoSearch.ejs', {
         market,
@@ -278,9 +300,11 @@ app.post('/mongo', checkAuthenticated, async (req, res) => {
     myEmitter.emit(
       'log',
       'ERROR',
-      users1[0].email || users1[0][0].email,
-      'MONGO SEARCH',
-      'Error searching for ' + input
+      (users1[0].id || users1[0][0].id) +
+        ' ' +
+        (users1[0].email || users1[0][0].email),
+      'MONGO_SEARCH',
+      'Error_Searching_For: ' + input
     );
     res.render('mongoSearch.ejs', {
       messages: { error: 'Cannot Find Anything! Try: NASDAQ or WFM' },
@@ -298,7 +322,7 @@ app.get('/both', checkAuthenticated, async (req, res) => {
   const searchByMarket = [];
   const searchByName = [];
   const searchBySymbol = [];
-  res.render('both.ejs', {
+  res.render('bothSearch.ejs', {
     searchByMarket,
     searchByName,
     searchBySymbol,
@@ -328,11 +352,13 @@ app.post('/both', checkAuthenticated, async (req, res) => {
       myEmitter.emit(
         'log',
         'ERROR',
-        users1[0].email || users1[0][0].email,
-        'MONGO & POSTGRES SEARCH',
-        'Error searching for ' + input
+        (users1[0].id || users1[0][0].id) +
+          ' ' +
+          (users1[0].email || users1[0][0].email),
+        'MONGO_&_POSTGRES_SEARCH',
+        'Error_Searching_For: ' + input
       );
-      res.render('both.ejs', {
+      res.render('bothSearch.ejs', {
         messages: { error: 'Cannot Find Anything! Try: NYSE or NEWS ' },
         market,
         stockName,
@@ -345,11 +371,13 @@ app.post('/both', checkAuthenticated, async (req, res) => {
       myEmitter.emit(
         'log',
         'INFO',
-        users1[0].email || users1[0][0].email,
-        'MONGO & POSTGRES SEARCH',
-        'User searched for ' + input
+        (users1[0].id || users1[0][0].id) +
+          ' ' +
+          (users1[0].email || users1[0][0].email),
+        'MONGO_&_POSTGRES_SEARCH',
+        'User_Searched_For: ' + input
       );
-      res.render('both.ejs', {
+      res.render('bothSearch.ejs', {
         searchByMarket,
         searchByName,
         searchBySymbol,
@@ -362,11 +390,13 @@ app.post('/both', checkAuthenticated, async (req, res) => {
     myEmitter.emit(
       'log',
       'ERROR',
-      users1[0].email || users1[0][0].email,
-      'MONGO & POSTGRES SEARCH',
-      'Error searching for ' + input
+      (users1[0].id || users1[0][0].id) +
+        ' ' +
+        (users1[0].email || users1[0][0].email),
+      'MONGO_&_POSTGRES SEARCH',
+      'Error_Searching_For: ' + input
     );
-    res.render('both.ejs', {
+    res.render('bothSearch.ejs', {
       messages: { error: 'Cannot Find Anything! Try: NYSE or NEWS' },
       searchByMarket,
       searchByName,
