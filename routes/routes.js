@@ -73,13 +73,12 @@ app.post('/login', async (req, res) => {
       req.body.email,
       hashedPassword2
     );
-    console.log(user);
     users1.push(user);
     if (user.length === 0) {
       myEmitter.emit(
         'log',
         'ERROR',
-        user[0].id + ' ' + req.body.email,
+        req.body.email,
         'LOGIN',
         'Incorrect_Email_Or_Password_Used'
       );
@@ -176,6 +175,7 @@ app.delete('/logout', (req, res) => {
 });
 
 app.get('/postgres', checkAuthenticated, async (req, res) => {
+  let easterEgg = [];
   const searchByMarket = [];
   const searchByName = [];
   const searchBySymbol = [];
@@ -183,16 +183,52 @@ app.get('/postgres', checkAuthenticated, async (req, res) => {
     searchByMarket,
     searchByName,
     searchBySymbol,
+    easterEgg,
   });
 });
 
 app.post('/postgres', checkAuthenticated, async (req, res) => {
   try {
+    let easterEgg = [];
     const input = await req.body.search;
     const searchByMarket = (await stockDal.getStockByMarket(input)) || [];
     const searchByName = (await stockDal.getStockByName(input)) || [];
     const searchBySymbol = (await stockDal.getStockBySymbol(input)) || [];
-    if (
+    if (req.body.search === 'moo') {
+      myEmitter.emit(
+        'log',
+        'INFO',
+        (users1[0].id || users1[0][0].id) +
+          ' ' +
+          (users1[0].email || users1[0][0].email),
+        'EASTER_EGG_FOUND',
+        input
+      );
+      let easterEgg = `http://www.quickmeme.com/img/5f/5fd47fe6162198f91ee2562c6b3d6f094946d9b79332cae700369a65cacde803.jpg`;
+      res.render('postgresSearch.ejs', {
+        searchByMarket,
+        searchByName,
+        searchBySymbol,
+        easterEgg,
+      });
+    } else if (req.body.search === 'mandalorian') {
+      myEmitter.emit(
+        'log',
+        'INFO',
+        (users1[0].id || users1[0][0].id) +
+          ' ' +
+          (users1[0].email || users1[0][0].email),
+        'EASTER_EGG_FOUND',
+        input
+      );
+      let easterEgg = `https://www.rollingstone.com/wp-content/uploads/2020/12/mandalorian-the-tragedyc.jpg?resize=1800,1200&w=1200`;
+      res.render('postgresSearch.ejs', {
+        searchByMarket,
+        searchByName,
+        searchBySymbol,
+        easterEgg,
+      });
+    } else if (
       searchByMarket.length === 0 &&
       searchByName.length === 0 &&
       searchBySymbol.length === 0
@@ -211,6 +247,7 @@ app.post('/postgres', checkAuthenticated, async (req, res) => {
         searchByMarket,
         searchByName,
         searchBySymbol,
+        easterEgg,
       });
     } else {
       myEmitter.emit(
@@ -226,6 +263,7 @@ app.post('/postgres', checkAuthenticated, async (req, res) => {
         searchByMarket,
         searchByName,
         searchBySymbol,
+        easterEgg,
       });
     }
   } catch {
@@ -243,15 +281,18 @@ app.post('/postgres', checkAuthenticated, async (req, res) => {
       searchByMarket,
       searchByName,
       searchBySymbol,
+      easterEgg,
     });
   }
 });
 
 app.get('/mongo', checkAuthenticated, async (req, res) => {
+  let easterEgg = [];
   const market = [];
   const stockName = [];
   const symbol = [];
   res.render('mongoSearch.ejs', {
+    easterEgg,
     market,
     stockName,
     symbol,
@@ -261,10 +302,49 @@ app.get('/mongo', checkAuthenticated, async (req, res) => {
 app.post('/mongo', checkAuthenticated, async (req, res) => {
   try {
     const input = await req.body.search;
+    let easterEgg = [];
     let stockName = (await getByFirstName(input)) || [];
     let market = (await getByStockMarket(input)) || [];
     let symbol = (await getByStockSymbol(input)) || [];
-    if (stockName.length === 0 && market.length === 0 && symbol.length === 0) {
+    if (req.body.search === 'moo') {
+      myEmitter.emit(
+        'log',
+        'INFO',
+        (users1[0].id || users1[0][0].id) +
+          ' ' +
+          (users1[0].email || users1[0][0].email),
+        'EASTER_EGG_FOUND',
+        input
+      );
+      let easterEgg = `http://www.quickmeme.com/img/5f/5fd47fe6162198f91ee2562c6b3d6f094946d9b79332cae700369a65cacde803.jpg`;
+      res.render('mongoSearch.ejs', {
+        market,
+        stockName,
+        symbol,
+        easterEgg,
+      });
+    } else if (req.body.search === 'mandalorian') {
+      myEmitter.emit(
+        'log',
+        'INFO',
+        (users1[0].id || users1[0][0].id) +
+          ' ' +
+          (users1[0].email || users1[0][0].email),
+        'EASTER_EGG_FOUND',
+        input
+      );
+      let easterEgg = `https://www.rollingstone.com/wp-content/uploads/2020/12/mandalorian-the-tragedyc.jpg?resize=1800,1200&w=1200`;
+      res.render('mongoSearch.ejs', {
+        market,
+        stockName,
+        symbol,
+        easterEgg,
+      });
+    } else if (
+      stockName.length === 0 &&
+      market.length === 0 &&
+      symbol.length === 0
+    ) {
       myEmitter.emit(
         'log',
         'ERROR',
@@ -279,6 +359,7 @@ app.post('/mongo', checkAuthenticated, async (req, res) => {
         market,
         stockName,
         symbol,
+        easterEgg,
       });
     } else {
       myEmitter.emit(
@@ -294,6 +375,7 @@ app.post('/mongo', checkAuthenticated, async (req, res) => {
         market,
         stockName,
         symbol,
+        easterEgg,
       });
     }
   } catch {
@@ -316,6 +398,7 @@ app.post('/mongo', checkAuthenticated, async (req, res) => {
 });
 
 app.get('/both', checkAuthenticated, async (req, res) => {
+  let easterEgg = [];
   const market = [];
   const stockName = [];
   const symbol = [];
@@ -329,19 +412,61 @@ app.get('/both', checkAuthenticated, async (req, res) => {
     market,
     stockName,
     symbol,
+    easterEgg,
   });
 });
 
 app.post('/both', checkAuthenticated, async (req, res) => {
   try {
     const input = await req.body.search;
+    let easterEgg = [];
     let stockName = (await getByFirstName(input)) || [];
     let market = (await getByStockMarket(input)) || [];
     let symbol = (await getByStockSymbol(input)) || [];
     const searchByMarket = (await stockDal.getStockByMarket(input)) || [];
     const searchByName = (await stockDal.getStockByName(input)) || [];
     const searchBySymbol = (await stockDal.getStockBySymbol(input)) || [];
-    if (
+    if (req.body.search === 'moo') {
+      myEmitter.emit(
+        'log',
+        'INFO',
+        (users1[0].id || users1[0][0].id) +
+          ' ' +
+          (users1[0].email || users1[0][0].email),
+        'EASTER_EGG_FOUND',
+        input
+      );
+      let easterEgg = `http://www.quickmeme.com/img/5f/5fd47fe6162198f91ee2562c6b3d6f094946d9b79332cae700369a65cacde803.jpg`;
+      res.render('bothSearch.ejs', {
+        searchByMarket,
+        searchByName,
+        searchBySymbol,
+        market,
+        stockName,
+        symbol,
+        easterEgg,
+      });
+    } else if (req.body.search === 'mandalorian') {
+      myEmitter.emit(
+        'log',
+        'INFO',
+        (users1[0].id || users1[0][0].id) +
+          ' ' +
+          (users1[0].email || users1[0][0].email),
+        'EASTER_EGG_FOUND',
+        input
+      );
+      let easterEgg = `https://www.rollingstone.com/wp-content/uploads/2020/12/mandalorian-the-tragedyc.jpg?resize=1800,1200&w=1200`;
+      res.render('bothSearch.ejs', {
+        searchByMarket,
+        searchByName,
+        searchBySymbol,
+        market,
+        stockName,
+        symbol,
+        easterEgg,
+      });
+    } else if (
       stockName.length === 0 &&
       market.length === 0 &&
       symbol.length === 0 &&
@@ -366,6 +491,7 @@ app.post('/both', checkAuthenticated, async (req, res) => {
         searchByMarket,
         searchByName,
         searchBySymbol,
+        easterEgg,
       });
     } else {
       myEmitter.emit(
@@ -384,6 +510,7 @@ app.post('/both', checkAuthenticated, async (req, res) => {
         market,
         stockName,
         symbol,
+        easterEgg,
       });
     }
   } catch {
@@ -404,6 +531,7 @@ app.post('/both', checkAuthenticated, async (req, res) => {
       market,
       stockName,
       symbol,
+      easterEgg,
     });
   }
 });

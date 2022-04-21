@@ -26,6 +26,9 @@
         <p id="p4"><strong>CAP</strong></p>
       </div>
       <div id="resultContainer">
+        <% if(easterEgg) { %> 
+          <img src="<%= easterEgg %>" /> 
+        <% } %>
         <% if (searchByMarket.length > 0) { %>
         <%searchByMarket.forEach(stock=>{%>
         <div class="stockInfo">

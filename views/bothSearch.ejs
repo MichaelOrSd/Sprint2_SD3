@@ -30,6 +30,9 @@
         <p id="bothp4"><strong>CAP</strong></p>
       </div>
       <div id="resultContainer">
+        <% if(easterEgg) { %> 
+          <img src="<%= easterEgg %>" /> 
+        <% } %>
         <% if (stockName.length > 0) { %> <% stockName.forEach(stock=>{%>
         <div class="stockInfo">
           <p><%= stock.stock_market %></p>
