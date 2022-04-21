@@ -1,0 +1,3 @@
+20220421	06:36:04	INFO	REGISTER	6eec9b9f example@example.com	A_New_User_Registered	fa443a3a-1411-4f0d-a04c-a392513cdf83
+20220421	06:36:14	INFO	LOGIN	6eec9b9f example@example.com	A_User_Logged_In	cb4ce852-2c8c-4fd5-95df-fee927afef99
+20220421	06:36:20	INFO	LOGOUT	6eec9b9f example@example.com	A_User_Logged_Out	c2089c90-a4a5-403d-af0a-bb21cdf7f49c
