@@ -1,9 +1,7 @@
-20220421	06:36:04	INFO	REGISTER	6eec9b9f example@example.com	A_New_User_Registered	fa443a3a-1411-4f0d-a04c-a392513cdf83
-20220421	06:36:14	INFO	LOGIN	6eec9b9f example@example.com	A_User_Logged_In	cb4ce852-2c8c-4fd5-95df-fee927afef99
-20220421	06:36:20	INFO	LOGOUT	6eec9b9f example@example.com	A_User_Logged_Out	c2089c90-a4a5-403d-af0a-bb21cdf7f49c
-
-20220421	13:10:04	INFO	LOGIN	7f7918a3 w@w	A_User_Logged_In	17be28b7-abe6-461e-828c-708c8a846051
-20220421	13:10:06	INFO	LOGOUT	7f7918a3 w@w	A_User_Logged_Out	ea8f1fb6-5cfe-4fae-91fa-5ff64b839c70
-20220421	13:12:54	INFO	LOGIN	7f7918a3 w@w	A_User_Logged_In	59326616-33de-49d1-8412-b4ba090a46b8
-20220421	13:12:54	INFO	LOGOUT	7f7918a3 w@w	A_User_Logged_Out	2b25d3f7-e95b-4efb-92f1-38a67da594c6
-20220421	13:13:59	ERROR	LOGIN	w@w	Incorrect_Email_Or_Password_Used	0cb9b263-7860-4ae7-83d0-c2c37197d200
+20220421	14:13:02	INFO	REGISTER	78af56f7 wesley.squire@keyin.com	A_New_User_Registered	16d2bd21-514f-472d-a38b-71b8662f5170
+20220421	14:13:09	INFO	LOGIN	78af56f7 wesley.squire@keyin.com	A_User_Logged_In	022b76f6-4f51-495d-a3d9-9679965a545c
+20220421	14:13:19	INFO	MONGO_SEARCH	78af56f7 wesley.squire@keyin.com	User_Searched_For: NASDAQ	1e0ba851-460f-404a-8a25-1b479351dec8
+20220421	14:13:27	INFO	MONGO_&_POSTGRES_SEARCH	78af56f7 wesley.squire@keyin.com	User_Searched_For: NEWS	fecddcd8-fa15-4889-b3f4-084a648f0222
+20220421	14:13:35	ERROR	MONGO_&_POSTGRES_SEARCH	78af56f7 wesley.squire@keyin.com	Error_Searching_For: NASAQS	30445a3a-615f-4158-bf20-f2e74788e9d2
+20220421	14:13:43	INFO	EASTER_EGG_FOUND	78af56f7 wesley.squire@keyin.com	moo	1843d829-4bf8-410e-a888-6ec9360e97fe
+20220421	14:13:47	INFO	LOGOUT	78af56f7 wesley.squire@keyin.com	A_User_Logged_Out	10ce289a-e53c-40ff-9f85-63b8dcf50760

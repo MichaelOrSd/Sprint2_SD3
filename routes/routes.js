@@ -73,7 +73,7 @@ app.post('/login', async (req, res) => {
       req.body.email,
       hashedPassword2
     );
-    users1.push(user || []);
+    users1.push(user);
     if (user.length === 0) {
       myEmitter.emit(
         'log',
@@ -99,7 +99,7 @@ app.post('/login', async (req, res) => {
     myEmitter.emit(
       'log',
       'ERROR',
-      req.body.email,
+      user[0].id + ' ' + req.body.email,
       'LOGIN',
       'Incorrect_Email_Or_Password Used'
     );
@@ -133,13 +133,25 @@ app.post('/register', async (req, res) => {
       await usersDal.addUser(crc, email, name, hashedPassword);
       res.redirect('/login');
     } else {
-      myEmitter.emit('log', 'ERROR', email, 'REGISTER', 'Email_Already_In_Use');
+      myEmitter.emit(
+        'log',
+        'ERROR',
+        crc + ' ' + email,
+        'REGISTER',
+        'Email_Already_In_Use'
+      );
       res.render('register.ejs', {
         messages: { error: 'Email is in use D:' },
       });
     }
   } catch {
-    myEmitter.emit('log', 'ERROR', email, 'REGISTER', 'Email_Already_In_Use');
+    myEmitter.emit(
+      'log',
+      'ERROR',
+      crc + ' ' + email,
+      'REGISTER',
+      'Email_Already_In_Use'
+    );
     res.render('register.ejs', {
       messages: { error: 'Email is in use D:' },
     });
