@@ -11,7 +11,7 @@ button:hover {
 }
 
 #loginhtml {
-  background-color: #88f5ab;
+  background-color: #c4c4c4;
 }
 
 #loginheader {
@@ -39,7 +39,7 @@ button:hover {
 /*********** REGISTER ***********/
 
 #registerhtml {
-  background-color: #88f5ab;
+  background-color: #c4c4c4;
 }
 
 #registerh1 {
@@ -95,7 +95,7 @@ nav {
   text-transform: uppercase;
   position: fixed;
   width: 100%;
-  background: #88f5ab;
+  background: #c4c4c4;
   font-family: 'Righteous', sans-serif;
 }
 nav ul {
