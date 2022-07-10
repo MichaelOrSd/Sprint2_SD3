@@ -1,8 +1,11 @@
 {
+  "homepage": "https://michaelorsd.github.io/StockMarketDataBaseSearch/",
   "name": "wesleysquire_sprint2.1",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "devStart": "nodemon server.js",
     "start": "node server.js"
   },
