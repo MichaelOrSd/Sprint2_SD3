@@ -1,2 +1,17 @@
 20220709	21:25:01	INFO	LOGOUT	da13b6dd bill@me.com	A_User_Logged_Out	4a0085ae-7a3a-483d-b3c7-bb6420839c1c
 20220709	21:25:15	INFO	LOGIN	da13b6dd bill@me.com	A_User_Logged_In	79bab72f-b6ad-4131-9b24-901fed6225a2
+20220709	21:26:34	INFO	LOGIN	da13b6dd bill@me.com	A_User_Logged_In	787ebc15-81ba-45e7-90e2-bc4a44fd4e11
+20220709	21:26:48	INFO	LOGIN	da13b6dd bill@me.com	A_User_Logged_In	5a5c076a-df02-4372-a0ff-0aab52a4f4cd
+20220709	21:27:17	INFO	LOGIN	da13b6dd bill@me.com	A_User_Logged_In	ca73d890-ad6c-431b-9e34-b240accc91cb
+20220709	21:29:39	INFO	LOGIN	da13b6dd bill@me.com	A_User_Logged_In	8da06e89-0227-4bcb-bd7b-be485634b5aa
+20220709	21:29:50	INFO	MONGO_&_POSTGRES_SEARCH	da13b6dd bill@me.com	User_Searched_For: WFM	e582f2a9-79ee-46f6-847f-17ae9b5fb670
+20220709	21:29:55	ERROR	POSTGRES_SEARCH	da13b6dd bill@me.com	Error_Searching_For: WFM	7c7b63c0-f227-427f-b03c-e9a5a470fd8d
+20220709	21:30:01	INFO	MONGO_SEARCH	da13b6dd bill@me.com	User_Searched_For: WFM	78e5148a-6d22-4595-9afa-e5cd98c602ec
+20220709	21:30:15	INFO	MONGO_&_POSTGRES_SEARCH	da13b6dd bill@me.com	User_Searched_For: NYSE	309ec390-2c5c-4b49-a6e3-d8b063b00f1b
+20220709	21:30:46	INFO	MONGO_SEARCH	da13b6dd bill@me.com	User_Searched_For: Qwest Corporation	53240587-1422-4788-aa8a-ead25c9561ab
+20220709	21:36:10	ERROR	MONGO_SEARCH	da13b6dd bill@me.com	Error_Searching_For: Qwest Corporation"	2969d57f-7cb1-4482-a0f9-601cc14ff65e
+20220709	21:36:21	INFO	MONGO_SEARCH	da13b6dd bill@me.com	User_Searched_For: NASDAQ	b5b6668d-df42-46e2-9b0e-8b43ab5c8664
+20220709	21:36:38	INFO	MONGO_SEARCH	da13b6dd bill@me.com	User_Searched_For: Qwest Corporation	20986fcc-ccc9-440b-b10d-44b7d97a859c
+20220709	21:36:53	INFO	MONGO_SEARCH	da13b6dd bill@me.com	User_Searched_For: Qwest Corporation	9063e27d-50ab-482c-b7ce-8eb600ec4a64
+20220709	21:37:03	INFO	POSTGRES_SEARCH	da13b6dd bill@me.com	User_Searched_For: NASDAQ	62272501-ccd1-44b3-993e-68b1e5750efc
+20220709	21:37:11	INFO	MONGO_&_POSTGRES_SEARCH	da13b6dd bill@me.com	User_Searched_For: NYSE	d913646e-ddd2-4f01-a44d-f310874d30f6
